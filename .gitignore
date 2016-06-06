@@ -1,13 +1,11 @@
-vendor/
-node_modules/
-
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-bootstrap/cache/
-storage/
-.env.*.php
-.env.php
+*.orig
+/vendor
+/node_modules
 .env
+resources/assets/vendor
+resources/assets/js/external
+public/css
+public/js
+public/fonts
+resources/lang/pt-BR
+composer.lock
