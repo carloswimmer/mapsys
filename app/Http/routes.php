@@ -19,12 +19,21 @@ Route::group(['middleware' => ['web']], function () {
 	// Show initial page
 	Route::get('/', 'AplicationController@index');
 
+	// Route::resource('submap', 'SubmapController', ['except' => ['create', 'show']]);
+
 	// Show Submap Dashboard
 	Route::get('/submap', 'SubmapController@index');
 
 	// Add new Submap
 	Route::post('/submap', 'SubmapController@store');
 
+	// Edit Submap
+	Route::get('/submap/{id}/edit', 'SubmapController@edit');
+
+	// Update Submap
+	Route::put('/submap/{id}', 'SubmapController@update');
+
 	// Delete Submap
 	Route::delete('/submap/{id}', 'SubmapController@destroy');
+
 });

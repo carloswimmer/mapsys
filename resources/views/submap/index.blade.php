@@ -67,13 +67,13 @@
                                                 </button>
                                             </form>
                                         </td>
+
                                          <!-- Submap Edit Button -->
                                         <td>
-                                            <form action="{{ url('submap/'.$submap->id) }}" method="POST">
+                                            <form action="{{ url('submap/'.$submap->id.'/edit') }}" method="GET">
                                                 {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
 
-                                                <button type="submit" class="btn btn-danger">
+                                                <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>
 													Editar
                                                 </button>

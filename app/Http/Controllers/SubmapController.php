@@ -35,4 +35,18 @@ class SubmapController extends Controller
 
 		return redirect('/submap');
 	}
+
+	// Show Submap Edit Form
+	public function edit(Submap $id) {
+		return view('submap.edit', ['submap' => $id]);	
+	}
+
+	// Update Submap
+	public function update(Request $request) {
+		$submap = Submap::find($request->id);
+		$submap->name = $request->name;
+		$submap->save();
+
+		return redirect('/submap');	
+	}
 }
