@@ -38,6 +38,7 @@ class SubmapController extends Controller
 
 	// Show Submap Edit Form
 	public function edit(Submap $id) {
+
 		return view('submap.edit', ['submap' => $id]);	
 	}
 

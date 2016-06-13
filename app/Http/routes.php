@@ -21,6 +21,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Route::resource('submap', 'SubmapController', ['except' => ['create', 'show']]);
 
+	// SUBMAP
 	// Show Submap Dashboard
 	Route::get('/submap', 'SubmapController@index');
 
@@ -36,4 +37,10 @@ Route::group(['middleware' => ['web']], function () {
 	// Delete Submap
 	Route::delete('/submap/{id}', 'SubmapController@destroy');
 
+	// HOST
+	// Show Host Dashboard
+	Route::get('/host', 'HostController@index');
+	
+	// Add new Host
+	Route::post('/host', 'HostController@store');
 });

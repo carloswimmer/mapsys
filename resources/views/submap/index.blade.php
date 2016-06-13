@@ -71,7 +71,6 @@
                                          <!-- Submap Edit Button -->
                                         <td>
                                             <form action="{{ url('submap/'.$submap->id.'/edit') }}" method="GET">
-                                                {{ csrf_field() }}
 
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>
