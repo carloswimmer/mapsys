@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="container">
-		<div class="col-sm-offset-2 col-sm-8">
+		<div class="col-sm-offset-0 col-sm-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Criar Host
@@ -61,7 +61,8 @@
 
             <!-- Current Host -->
             @if (count($hosts) > 0)
-                <div class="panel panel-default">
+                <div class="panel panel-default"> 
+                <!-- <div class="container-fluid"> -->
                     <div class="panel-heading">
                         Lista de Hosts
                     </div>
@@ -71,6 +72,7 @@
                             <thead>
                                 <th>Elementid</th>
                                 <th>Host</th>
+								<th>Submapa</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
@@ -78,6 +80,7 @@
                                     <tr>
                                         <td class="table-text"><div>{{ $host->elementid }}</div></td>
                                         <td class="table-text"><div>{{ $host->name }}</div></td>
+                                        <td class="table-text"><div>{{ $host->submap->name }}</div></td>
 
                                         <!-- Host Delete Button -->
                                         <td>

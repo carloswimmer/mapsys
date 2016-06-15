@@ -21,15 +21,39 @@ class HostController extends Controller
 
 	// Add new Host
 	public function store(Request $request) {
-		//$submap = new Submap;
-		//$submap->id = $request->submap_id;
 
 		$host = new Host;
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
 		$host->submap_id = $request->submap_id;
-		//$host->submap = $submap;
 
+		$host->save();
+
+		return redirect('/host');
+	}
+
+    // Delete Host
+    public function destroy(Host $id) {
+        $id->delete();
+
+        return redirect('/host');
+    }
+
+	// Show Host Edit Form
+        public function edit(Host $id) {
+
+            return view('host.edit', 
+				['host' => $id], 
+				['submaps' => Submap::orderBy('name')->get()]
+			);
+        }
+	
+	// Update Host
+	public function update(Request $request) {
+		$host = Host::find($request->id);
+		$host->elementid = $request->elementid;
+		$host->name = $request->name;
+		$host->submap_id = $request->submap_id;
 		$host->save();
 
 		return redirect('/host');

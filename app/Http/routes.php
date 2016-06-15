@@ -43,4 +43,14 @@ Route::group(['middleware' => ['web']], function () {
 	
 	// Add new Host
 	Route::post('/host', 'HostController@store');
+
+	// Edit Host
+	Route::get('/host/{id}/edit', 'HostController@edit');
+
+	// Update Host
+	Route::put('/host/{id}', 'HostController@update');
+
+	// Delete Host
+	Route::delete('/host/{id}', 'HostController@destroy');
+
 });
