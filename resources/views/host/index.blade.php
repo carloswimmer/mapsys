@@ -39,7 +39,7 @@
 							<label for="host-submap" class="col-sm-3 control-label">Submapa</label>
 
 							<div class="col-sm-6">
-								<select name="submap_id" id="host-submap_id" class="form-control" value="{{ old('host') }}">
+								<select name="submap" id="host-submap" class="form-control" value="{{ old('host') }}">
 									@foreach ($submaps as $submap)
 										<option value={{ $submap->id }}>{{ $submap->name }}</option>
 									@endforeach

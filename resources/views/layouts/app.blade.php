@@ -54,9 +54,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/submap') }}">Submapa</a></li>
-                        <li><a href="{{ url('/host') }}">Host</a></li>
                         <li><a href="{{ url('/link') }}">Link</a></li>
+                        <li><a href="{{ url('/host') }}">Host</a></li>
+                        <li><a href="{{ url('/submap') }}">Submapa</a></li>
+                        <li><a href="{{ url('/switchmodel') }}">Modelo de Host</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

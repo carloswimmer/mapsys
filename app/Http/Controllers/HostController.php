@@ -25,7 +25,7 @@ class HostController extends Controller
 		$host = new Host;
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
-		$host->submap_id = $request->submap_id;
+		$host->submap = $request->submap;
 
 		$host->save();
 
@@ -53,7 +53,7 @@ class HostController extends Controller
 		$host = Host::find($request->id);
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
-		$host->submap_id = $request->submap_id;
+		$host->submap = $request->submap;
 		$host->save();
 
 		return redirect('/host');

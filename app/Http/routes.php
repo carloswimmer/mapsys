@@ -53,4 +53,21 @@ Route::group(['middleware' => ['web']], function () {
 	// Delete Host
 	Route::delete('/host/{id}', 'HostController@destroy');
 
+	// SWITCH MODEL
+	// Show switchmodel Dashboard
+	Route::get('/switchmodel', 'SwitchmodelController@index');
+	
+	//// Add new switchmodel
+	//Route::post('/switchmodel', 'SwitchmodelController@store');
+
+	//// Edit switchmodel
+	//Route::get('/switchmodel/{id}/edit', 'SwitchmodelController@edit');
+
+	//// Update switchmodel
+	//Route::put('/switchmodel/{id}', 'SwitchmodelController@update');
+
+	//// Delete switchmodel
+	//Route::delete('/switchmodel/{id}', 'SwitchmodelController@destroy');
+
+
 });
