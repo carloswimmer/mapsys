@@ -15,20 +15,22 @@ class SwitchmodelController extends Controller
             'switchmodels' => Switchmodel::orderBy('created_at', 'asc')->get()
         ]);
     }
-//
-//    // Add new Switchmodel
-//    public function store(Request $request) {
-//        $this->validate($request, [
-//            'name' => 'required|max:255',
-//        ]);
-//
-//        $switchmodel = new Switchmodel;
-//        $switchmodel->name = $request->name;
-//        $switchmodel->save();
-//
-//        return redirect('/switchmodel');
-//    }
-//
+
+    // Add new Switchmodel
+    public function store(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $switchmodel = new Switchmodel;
+        $switchmodel->name = $request->name;
+        $switchmodel->port = $request->port;
+        $switchmodel->oid = $request->oid;
+        $switchmodel->save();
+
+        return redirect('/switchmodel');
+    }
+
 //    // Delete Switchmodel
 //    public function destroy(Switchmodel $id) {
 //        $id->delete();

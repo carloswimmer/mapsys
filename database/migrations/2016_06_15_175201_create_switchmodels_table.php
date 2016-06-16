@@ -15,7 +15,7 @@ class CreateSwitchmodelsTable extends Migration
         Schema::create('switchmodels', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('name');
-			$table->string('porta');
+			$table->string('port');
 			$table->string('oid');
             $table->timestamps();
         });

@@ -57,8 +57,8 @@ Route::group(['middleware' => ['web']], function () {
 	// Show switchmodel Dashboard
 	Route::get('/switchmodel', 'SwitchmodelController@index');
 	
-	//// Add new switchmodel
-	//Route::post('/switchmodel', 'SwitchmodelController@store');
+	// Add new switchmodel
+	Route::post('/switchmodel', 'SwitchmodelController@store');
 
 	//// Edit switchmodel
 	//Route::get('/switchmodel/{id}/edit', 'SwitchmodelController@edit');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Host;
+use App\Switchmodel;
 use App\Submap;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,11 +13,15 @@ class HostController extends Controller
 {
     // Show Host Dashboard
 	public function index() {
-		return view('host.index', [
-			'submaps' => Submap::orderBy('name', 'asc')->get()
-		], [
-			'hosts' => Host::orderBy('created_at', 'desc')->get()
-		]);	
+		$hosts = Host::orderBy('created_at', 'desc');
+		$submaps = Submap::orderBy('name', 'asc');
+		$switchmodels = Switchmodel::orderBy('name', 'asc');
+
+		return view('host.index', compact('hosts', 'submaps', 'switchmodels'));
+		//	['submaps' => Submap::orderBy('name', 'asc')->get()],
+		//	['switchmodels' => Switchmodel::orderBy('name', 'asc')->get()],
+		//	['hosts' => Host::orderBy('created_at', 'desc')->get()]
+		//);	
 	}
 
 	// Add new Host

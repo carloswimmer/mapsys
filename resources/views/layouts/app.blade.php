@@ -57,7 +57,7 @@
                         <li><a href="{{ url('/link') }}">Link</a></li>
                         <li><a href="{{ url('/host') }}">Host</a></li>
                         <li><a href="{{ url('/submap') }}">Submapa</a></li>
-                        <li><a href="{{ url('/switchmodel') }}">Modelo de Host</a></li>
+                        <li><a href="{{ url('/switchmodel') }}">Modelo de Switch</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
