@@ -39,7 +39,7 @@
 							<label for="host-switchmodel" class="col-sm-3 control-label">Switchmodel</label>
 
 							<div class="col-sm-6">
-								<select name="switchmodel" id="host-switchmodel" class="form-control" value="{{ old('host') }}">
+								<select name="switchmodel_id" id="host-switchmodel" class="form-control" value="{{ old('host') }}">
 									@foreach ($switchmodels as $switchmodel)
 										<option value={{ $switchmodel->id }}>{{ $switchmodel->name }}</option>
 									@endforeach
@@ -53,7 +53,7 @@
 							<label for="host-submap" class="col-sm-3 control-label">Submapa</label>
 
 							<div class="col-sm-6">
-								<select name="submap" id="host-submap" class="form-control" value="{{ old('host') }}">
+								<select name="submap_id" id="host-submap" class="form-control" value="{{ old('host') }}">
 									@foreach ($submaps as $submap)
 										<option value={{ $submap->id }}>{{ $submap->name }}</option>
 									@endforeach
@@ -86,18 +86,20 @@
                             <thead>
                                 <th>Elementid</th>
                                 <th>Host</th>
+								<th>Modelo</th>
 								<th>Submapa</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
                                 @foreach ($hosts as $host)
-                                    <tr>
                                         <td class="table-text"><div>{{ $host->elementid }}</div></td>
                                         <td class="table-text"><div>{{ $host->name }}</div></td>
+                                        <td class="table-text"><div>{{ $host->switchmodel->name }}</div></td>
                                         <td class="table-text"><div>{{ $host->submap->name }}</div></td>
+	
 
-                                        <!-- Host Delete Button -->
-                                        <td>
+										<!-- Host Delete Button -->
+										<td>
                                             <form action="{{ url('host/'.$host->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -109,7 +111,7 @@
                                             </form>
                                         </td>
 
-                                         <!-- Host Edit Button -->
+                                        <!-- Host Edit Button -->
                                         <td>
                                             <form action="{{ url('host/'.$host->id.'/edit') }}" method="GET">
 

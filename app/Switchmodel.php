@@ -8,7 +8,7 @@ use App\Host;
 class Switchmodel extends Model
 {
     //
-	public function hostsSwitchmodel() {
+	public function hosts() {
 		return $this->hasMany(Host::class);	
 	}
 }
