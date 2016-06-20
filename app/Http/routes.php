@@ -60,14 +60,14 @@ Route::group(['middleware' => ['web']], function () {
 	// Add new switchmodel
 	Route::post('/switchmodel', 'SwitchmodelController@store');
 
-	//// Edit switchmodel
-	//Route::get('/switchmodel/{id}/edit', 'SwitchmodelController@edit');
+	// Edit switchmodel
+	Route::get('/switchmodel/{id}/edit', 'SwitchmodelController@edit');
 
-	//// Update switchmodel
-	//Route::put('/switchmodel/{id}', 'SwitchmodelController@update');
+	// Update switchmodel
+	Route::put('/switchmodel/{id}', 'SwitchmodelController@update');
 
-	//// Delete switchmodel
-	//Route::delete('/switchmodel/{id}', 'SwitchmodelController@destroy');
+	// Delete switchmodel
+	Route::delete('/switchmodel/{id}', 'SwitchmodelController@destroy');
 
 
 });

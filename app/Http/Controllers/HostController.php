@@ -18,13 +18,6 @@ class HostController extends Controller
 		$data['switchmodels'] = Switchmodel::orderBy('name', 'asc')->get();
 		
 		return view('host.index', $data); 
-
-		//die(print count($hosts));
-		//	['hosts' => Host::orderBy('created_at', 'desc')->get()]);
-		//	compact('hosts', 'submaps', 'switchmodels'));
-		//	['submaps' => Submap::orderBy('name', 'asc')->get()],
-		//	['switchmodels' => Switchmodel::orderBy('name', 'asc')->get()],
-		//);	
 	}
 
 	// Add new Host
@@ -32,11 +25,14 @@ class HostController extends Controller
 		$host = new Host;
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
-		$host->switchmodel_id = $request->switchmodel_id;
-		$host->submap_id = $request->submap_id;
 
-		$switchmodel = Switchmodel::find($host->switchmodel_id);
-		$submap = Submap::find($host->submap_id);
+		$switchmodel = new Switchmodel;
+		$switchmodel = Switchmodel::find($request->switchmodel_id);
+		$host->switchmodel()->associate($switchmodel);
+
+		$submap = new Submap;
+		$submap = Submap::find($request->submap_id);
+		$host->submap()->associate($submap);
 
 //		$host = $this->_createHost($request);
 
@@ -53,12 +49,15 @@ class HostController extends Controller
     }
 
 	// Show Host Edit Form
-        public function edit(Host $id) {
+    public function edit(Host $id) {
+//		$host = new Host;
+//		$host = Host::find($id);
+//		$data['hosts'] = $host;
 
-            return view('host.edit', 
-				['host' => $id], 
-				['submaps' => Submap::orderBy('name')->get()]
-			);
+		$data['submaps'] = Submap::orderBy('name', 'asc')->get();
+		$data['switchmodels'] = Switchmodel::orderBy('name', 'asc')->get();
+
+            return view('host.edit', ['host' => $id], $data);
         }
 	
 	// Update Host
@@ -66,7 +65,15 @@ class HostController extends Controller
 		$host = Host::find($request->id);
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
-		$host->submap = $request->submap;
+
+		$switchmodel = new Switchmodel;
+		$switchmodel = Switchmodel::find($request->switchmodel_id);
+		$host->switchmodel()->associate($switchmodel);
+
+		$submap = new Submap;
+		$submap = Submap::find($request->submap_id);
+		$host->submap()->associate($submap);
+
 		$host->save();
 
 		return redirect('/host');

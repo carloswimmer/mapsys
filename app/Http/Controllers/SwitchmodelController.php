@@ -31,26 +31,28 @@ class SwitchmodelController extends Controller
         return redirect('/switchmodel');
     }
 
-//    // Delete Switchmodel
-//    public function destroy(Switchmodel $id) {
-//        $id->delete();
-//
-//        return redirect('/switchmodel');
-//    }
-//
-//    // Show Switchmodel Edit Form
-//    public function edit(Switchmodel $id) {
-//
-//        return view('switchmodel.edit', ['submap' => $id]);
-//    }
-//
-//    // Update Switchmodel
-//    public function update(Request $request) {
-//        $switchmodel = Switchmodel::find($request->id);
-//        $switchmodel->name = $request->name;
-//        $switchmodel->save();
-//
-//        return redirect('/switchmodel');
-//    }
+    // Delete Switchmodel
+    public function destroy(Switchmodel $id) {
+        $id->delete();
+
+        return redirect('/switchmodel');
+    }
+
+    // Show Switchmodel Edit Form
+    public function edit(Switchmodel $id) {
+
+        return view('switchmodel.edit', ['switchmodel' => $id]);
+    }
+
+    // Update Switchmodel
+    public function update(Request $request) {
+        $switchmodel = Switchmodel::find($request->id);
+        $switchmodel->name = $request->name;
+        $switchmodel->port = $request->port;
+        $switchmodel->oid = $request->oid;
+        $switchmodel->save();
+
+        return redirect('/switchmodel');
+    }
 
 }
