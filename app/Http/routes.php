@@ -21,7 +21,10 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Route::resource('submap', 'SubmapController', ['except' => ['create', 'show']]);
 
-	// SUBMAP
+	/*
+	 * SUBMAP
+	 */
+
 	// Show Submap Dashboard
 	Route::get('/submap', 'SubmapController@index');
 
@@ -37,7 +40,10 @@ Route::group(['middleware' => ['web']], function () {
 	// Delete Submap
 	Route::delete('/submap/{id}', 'SubmapController@destroy');
 
-	// HOST
+	/*
+	 * HOST
+	 */
+	 
 	// Show Host Dashboard
 	Route::get('/host', 'HostController@index');
 	
@@ -53,7 +59,10 @@ Route::group(['middleware' => ['web']], function () {
 	// Delete Host
 	Route::delete('/host/{id}', 'HostController@destroy');
 
-	// SWITCH MODEL
+	/*
+	 * SWITCH MODEL
+	 */
+	 
 	// Show switchmodel Dashboard
 	Route::get('/switchmodel', 'SwitchmodelController@index');
 	
@@ -69,5 +78,23 @@ Route::group(['middleware' => ['web']], function () {
 	// Delete switchmodel
 	Route::delete('/switchmodel/{id}', 'SwitchmodelController@destroy');
 
+	/*
+	 * LINK 
+	 */
+	 
+	// Show link Dashboard
+	Route::get('/link', 'LinkController@index');
+	
+	// Add new link
+	Route::post('/link', 'LinkController@store');
+
+	// Edit link
+	Route::get('/link/{id}/edit', 'LinkController@edit');
+
+	// Update link
+	Route::put('/link/{id}', 'LinkController@update');
+
+	// Delete link
+	Route::delete('/link/{id}', 'LinkController@destroy');
 
 });
