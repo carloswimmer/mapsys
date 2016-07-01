@@ -15,14 +15,14 @@ class CreateHostsTable extends Migration
 		Schema::enableForeignKeyConstraints();
         Schema::create('hosts', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('switchmodel_id')->unsigned()->nullable();
+			$table->integer('switch_model_id')->unsigned()->nullable();
 			$table->integer('submap_id')->unsigned()->nullable();
 			$table->integer('elementid');
 			$table->string('name');
             $table->timestamps();
 
 			$table->foreign('submap_id')->references('id')->on('submaps');
-			$table->foreign('switchmodel_id')->references('id')->on('switchmodels');
+			$table->foreign('switch_model_id')->references('id')->on('switch_models');
         });
     }
 

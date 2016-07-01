@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSwitchmodelsTable extends Migration
+class CreateSwitchModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,14 @@ class CreateSwitchmodelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('switchmodels', function (Blueprint $table) {
+		Schema::enableForeignKeyConstraints();
+        Schema::create('switch_models', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('name');
-			$table->string('port');
-			$table->string('oid');
+			$table->integer('port_id')->unsigned()->nullable();
+            $table->string('name');
             $table->timestamps();
+
+			$table->foreign('port_id')->references('id')->on('ports');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateSwitchmodelsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('switchmodels');
+        Schema::drop('switch_models');
     }
 }
