@@ -75,11 +75,11 @@
                                     <tr>
                                         <td class="table-text"><div>{{ $switchModel->name }}</div></td>
                                         <td class="table-text"><div>{{ $switchModel->ports()->name }}</div></td>
-                                        <td class="table-text"><div>{{ $switchModel->ports()->oids()->number }}</div></td>
+                                        <td class="table-text"><div>{{ $switchModel->oids()->number }}</div></td>
 
                                         <!-- switchmodel Delete Button -->
                                         <td>
-                                            <form action="{{ url('switchmodel/'.$switchModel->id) }}" method="POST">
+                                            <form action="{{ url('switchmodel/'.$switchmodel->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -92,7 +92,7 @@
 
                                          <!-- switchmodel Edit Button -->
                                         <td>
-                                            <form action="{{ url('switchmodel/'.$switchModel->id.'/edit') }}" method="GET">
+                                            <form action="{{ url('switchmodel/'.$switchmodel->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>

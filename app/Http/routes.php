@@ -12,6 +12,11 @@
 */
 
 use App\Submap;
+use App\Host;
+use App\SwitchModel;
+use App\Port;
+use App\Oid;
+use App\Link;
 use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['web']], function () {
@@ -64,19 +69,19 @@ Route::group(['middleware' => ['web']], function () {
 	 */
 	 
 	// Show switchmodel Dashboard
-	Route::get('/switchmodel', 'SwitchmodelController@index');
+	Route::get('/switchmodel', 'SwitchModelController@index');
 	
 	// Add new switchmodel
-	Route::post('/switchmodel', 'SwitchmodelController@store');
+	Route::post('/switchmodel', 'SwitchModelController@store');
 
 	// Edit switchmodel
-	Route::get('/switchmodel/{id}/edit', 'SwitchmodelController@edit');
+	Route::get('/switchmodel/{id}/edit', 'SwitchModelController@edit');
 
 	// Update switchmodel
-	Route::put('/switchmodel/{id}', 'SwitchmodelController@update');
+	Route::put('/switchmodel/{id}', 'SwitchModelController@update');
 
 	// Delete switchmodel
-	Route::delete('/switchmodel/{id}', 'SwitchmodelController@destroy');
+	Route::delete('/switchmodel/{id}', 'SwitchModelController@destroy');
 
 	/*
 	 * LINK 
