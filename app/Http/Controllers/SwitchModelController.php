@@ -47,8 +47,10 @@ class SwitchModelController extends Controller
     }
 
     // Delete SwitchModel
-    public function destroy(SwitchModel $id) {
-        $id->delete();
+    public function destroy($id) {
+        SwitchModel::find($id)->delete();
+        Port::find($id)->delete();
+        Oid::find($id)->delete();
 
         return redirect('/switchmodel');
     }
