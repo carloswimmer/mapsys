@@ -34,13 +34,14 @@ class SwitchModelController extends Controller
 
 		$port = new Port;
 		$port->name = $request->port;
-		$port->oid_id = $oid->id;
         $port->save();
 
         $switchModel = new SwitchModel;
         $switchModel->name = $request->name;
-		$switchModel->port_id = $port->id;
         $switchModel->save();
+
+		$oid->ports()->save($port);
+		$port->switchModels()->save($switchModel);
 
         return redirect('/switchmodel');
     }

@@ -12,14 +12,10 @@ class CreatePortsTable extends Migration
      */
     public function up()
     {
-		Schema::enableForeignKeyConstraints();
         Schema::create('ports', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('oid_id')->unsigned()->nullable();
 			$table->string('name');
             $table->timestamps();
-
-			$table->foreign('oid_id')->references('id')->on('oids');
         });
     }
 

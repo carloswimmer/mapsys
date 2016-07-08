@@ -8,6 +8,8 @@ use App\SwitchModel;
 
 class Port extends Model
 {
+	protected $fillable = ['name'];
+
     // Oids that belong to port.
 	public function oids() {
 		return $this->belongsToMany('Oid');

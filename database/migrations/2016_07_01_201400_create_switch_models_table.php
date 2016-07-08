@@ -15,11 +15,8 @@ class CreateSwitchModelsTable extends Migration
 		Schema::enableForeignKeyConstraints();
         Schema::create('switch_models', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('port_id')->unsigned()->nullable();
             $table->string('name');
             $table->timestamps();
-
-			$table->foreign('port_id')->references('id')->on('ports');
         });
     }
 

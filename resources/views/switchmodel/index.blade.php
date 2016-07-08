@@ -72,10 +72,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($switchModels as $switchModel)
+                                	@foreach ($switchModel->ports as $port)
                                     <tr>
                                         <td class="table-text"><div>{{ $switchModel->name }}</div></td>
-                                        <td class="table-text"><div>{{ $switchModel->ports()->name }}</div></td>
-                                        <td class="table-text"><div>{{ $switchModel->ports()->oids()->number }}</div></td>
+                                        <td class="table-text"><div>{{ $port->name }}</div></td>
+                                        <td class="table-text"><div>{{ $oid->number }}</div></td>
 
                                         <!-- switchmodel Delete Button -->
                                         <td>
@@ -101,6 +102,7 @@
                                             </form>
                                         </td>
                                     </tr>
+                                	@endforeach
                                 @endforeach
                             </tbody>
                         </table>
