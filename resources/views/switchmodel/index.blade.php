@@ -73,34 +73,36 @@
                             <tbody>
                                 @foreach ($switchModels as $switchModel)
                                 	@foreach ($switchModel->ports as $port)
-                                    <tr>
-                                        <td class="table-text"><div>{{ $switchModel->name }}</div></td>
-                                        <td class="table-text"><div>{{ $port->name }}</div></td>
-                                        <td class="table-text"><div>{{ $port->pivot->number }}</div></td>
-                                        <!-- switchmodel Delete Button -->
-                                        <td>
-                                            <form action="{{ url('switchmodel/'.$switchModel->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-btn fa-trash"></i>
-													Deletar
-                                                </button>
-                                            </form>
-                                        </td>
-
-                                         <!-- switchmodel Edit Button -->
-                                        <td>
-                                            <form action="{{ url('switchmodel/'.$switchModel->id.'/edit') }}" method="GET">
-
-                                                <button type="submit" class="btn btn-default">
-                                                    <i class="fa fa-btn fa-pencil"></i>
-													Editar
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                		@foreach ($port->oids as $oid)
+		                                    <tr>
+		                                        <td class="table-text"><div>{{ $switchModel->name }}</div></td>
+		                                        <td class="table-text"><div>{{ $port->name }}</div></td>
+		                                        <td class="table-text"><div>{{ $oid->number }}</div></td>
+		                                        <!-- switchmodel Delete Button -->
+		                                        <td>
+		                                            <form action="{{ url('switchmodel/'.$switchModel->id) }}" method="POST">
+		                                                {{ csrf_field() }}
+		                                                {{ method_field('DELETE') }}
+		
+		                                                <button type="submit" class="btn btn-danger">
+		                                                    <i class="fa fa-btn fa-trash"></i>
+															Deletar
+		                                                </button>
+		                                            </form>
+		                                        </td>
+		
+		                                         <!-- switchmodel Edit Button -->
+		                                        <td>
+		                                            <form action="{{ url('switchmodel/'.$switchModel->id.'/edit') }}" method="GET">
+		
+		                                                <button type="submit" class="btn btn-default">
+		                                                    <i class="fa fa-btn fa-pencil"></i>
+															Editar
+		                                                </button>
+		                                            </form>
+		                                        </td>
+		                                    </tr>
+                                		@endforeach
                                 	@endforeach
                                 @endforeach
                             </tbody>
