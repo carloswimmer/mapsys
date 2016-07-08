@@ -40,8 +40,8 @@ class SwitchModelController extends Controller
         $switchModel->name = $request->name;
         $switchModel->save();
 
-		$oid->ports()->save($port);
-		$port->switchModels()->save($switchModel);
+		$port->oids()->attach($oid);
+		$switchModel->ports()->attach($port);
 
         return redirect('/switchmodel');
     }

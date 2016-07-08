@@ -12,11 +12,11 @@ class Port extends Model
 
     // Oids that belong to port.
 	public function oids() {
-		return $this->belongsToMany('Oid');
+		return $this->belongsToMany(Oid::class);
 	}
 
 	// Switchs that belong to port.
 	public function switchModels() {
-		return $this->belongsToMany('SwitchModel');
+		return $this->belongsToMany(SwitchModel::class);
 	}
 }

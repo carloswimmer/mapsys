@@ -76,8 +76,7 @@
                                     <tr>
                                         <td class="table-text"><div>{{ $switchModel->name }}</div></td>
                                         <td class="table-text"><div>{{ $port->name }}</div></td>
-                                        <td class="table-text"><div>{{ $oid->number }}</div></td>
-
+                                        <td class="table-text"><div>{{ $port->pivot->number }}</div></td>
                                         <!-- switchmodel Delete Button -->
                                         <td>
                                             <form action="{{ url('switchmodel/'.$switchModel->id) }}" method="POST">

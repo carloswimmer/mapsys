@@ -11,7 +11,7 @@ class Oid extends Model
 	protected $fillable = ['number'];
 
 	public function ports() {
-		return $this->belongsToMany('Port');
+		return $this->belongsToMany(Port::class);
 	}
 
 
