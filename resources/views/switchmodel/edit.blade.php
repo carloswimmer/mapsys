@@ -13,7 +13,7 @@
                     @include('common.errors')
 
                     <!-- New Switchmodel Form -->
-                    <form action="{{ url('switchmodel/'.$switchmodel->id) }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('switchmodel/'.$switchModel->id) }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 						{{ method_field('PUT') }}
 
@@ -22,7 +22,7 @@
                             <label for="switchmodel-name" class="col-sm-3 control-label">Modelo</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="switchmodel-name" class="form-control" value="{{  $switchmodel->name }}">
+									<input type="text" name="name" id="first-edit" class="form-control" value="{{ $switchModel->name }}">
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                             <label for="switchmodel-port" class="col-sm-3 control-label">Porta</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="port" id="switchmodel-port" class="form-control" value="{{  $switchmodel->port }}">
+                                <input type="text" name="port" id="switchmodel-port" class="form-control" value="{{ $port->name }}">
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                             <label for="switchmodel-oid" class="col-sm-3 control-label">Oid</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="oid" id="switchmodel-oid" class="form-control" value="{{  $switchmodel->oid }}">
+                                <input type="text" name="oid" id="switchmodel-oid" class="form-control" value="{{ $oid->number }}">
                             </div>
                         </div>
 

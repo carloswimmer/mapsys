@@ -21,7 +21,7 @@
                             <label for="submap-name" class="col-sm-3 control-label">Submapa</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="submap-name" class="form-control" value="{{ old('submap') }}">
+                                <input type="text" name="name" id="first" class="form-control" value="{{ old('submap') }}">
                             </div>
                         </div>
 

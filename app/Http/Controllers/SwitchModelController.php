@@ -56,18 +56,27 @@ class SwitchModelController extends Controller
     }
 
     // Show SwitchModel Edit Form
-    public function edit(SwitchModel $id) {
+    public function edit($id) {
+		$data['switchModel'] = SwitchModel::find($id);
+		$data['port'] = Port::find($id);
+		$data['oid'] = Oid::find($id);
 
-        return view('switchmodel.edit', ['switchmodel' => $id]);
+        return view('switchmodel.edit', $data);
     }
 
     // Update SwitchModel
     public function update(Request $request) {
         $switchModel = SwitchModel::find($request->id);
         $switchModel->name = $request->name;
-        $switchModel->port = $request->port;
-        $switchModel->oid = $request->oid;
         $switchModel->save();
+
+		$port = Port::find($request->id);
+        $port->name = $request->port;
+		$port->save();
+
+        $oid = Oid::find($request->id);
+		$oid->number = $request->oid;
+		$oid->save();
 
         return redirect('/switchmodel');
     }

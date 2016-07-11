@@ -21,7 +21,7 @@
 							<label for="host-elementid" class="col-sm-3 control-label">Id no Zabbix</label>
 
 							<div class="col-sm-6">
-								<input type="text" name="elementid" id="host-elementid" class="form-control" value="{{ old('host') }}">
+								<input type="text" name="elementid" id="first" class="form-control" >
 							</div>
 						</div>
 
@@ -30,7 +30,7 @@
 							<label for="host-name" class="col-sm-3 control-label">Host</label>
 
 							<div class="col-sm-6">
-								<input type="text" name="name" id="host-name" class="form-control" value="{{ old('host') }}">
+								<input type="text" name="name" id="host-name" class="form-control" >
 							</div>
 						</div>
 
@@ -39,7 +39,7 @@
 							<label for="host-switchmodel" class="col-sm-3 control-label">Switchmodel</label>
 
 							<div class="col-sm-6">
-								<select name="switchmodel_id" id="host-switchmodel" class="form-control" value="{{ old('host') }}">
+								<select name="switchmodel_id" id="host-switchmodel" class="form-control" >
 									@foreach ($switchmodels as $switchmodel)
 										<option value={{ $switchmodel->id }}>{{ $switchmodel->name }}</option>
 									@endforeach

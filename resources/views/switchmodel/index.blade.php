@@ -21,7 +21,7 @@
                             <label for="switchmodel-name" class="col-sm-3 control-label">Modelo</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="switchmodel-name" class="form-control" value="{{ old('switchmodel->name') }}">
+                                <input type="text" name="name" id="first" class="form-control" value="{{ old('switchmodel->name') }}">
                             </div>
                         </div>
 

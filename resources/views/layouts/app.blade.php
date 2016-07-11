@@ -7,6 +7,16 @@
 
     <title>Sistema Gerador de Mapas Zabbix - Mapsys</title>
 
+	<!-- Script  -->
+	<script type="text/javascript">
+		function setFocusToTextBox() {
+			if(document.getElementById("first")) {
+				document.getElementById("first").focus();	
+			} else {
+				document.getElementById("first-edit").select();
+			}
+		}
+	</script>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
@@ -25,7 +35,7 @@
         }
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" onload="setFocusToTextBox()">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
