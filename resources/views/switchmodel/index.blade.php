@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+	<!-- Modal switchModelName  -->
+	<div class="modal fade" id="switchModelName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modelo do Switch</h4>
+				</div>
+				<div class="modal-body">
+					<input type="text" name="newname" id="first-new" class="form-control">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default">
+						<i class="fa fa-btn fa-plus"></i>Salvar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Content  -->
     <div class="container">
         <div class="col-sm-offset-0 col-sm-12">
             <div class="panel panel-default">
@@ -23,6 +44,12 @@
                             <div class="col-sm-6">
                                 <input type="text" name="name" id="first" class="form-control" value="{{ old('switchmodel->name') }}">
                             </div>
+
+							<!-- Button trigger modal switchModelName  -->
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#switchModelName">
+								<i class="fa fa-btn fa-plus"></i>Novo
+							</div>
                         </div>
 
                          <!-- switchmodel Port -->
