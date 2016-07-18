@@ -3,51 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Submap;
+use App\Oid;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SubmapController extends Controller
+class NewOidController extends Controller
 {
-    // Show Submap Dashboard
+    // Show Oid Dashboard
 	public function index() {
-		return view('submap.index', [
-			'submaps' => Submap::orderBy('created_at', 'asc')->get()
+		return view('newoid.index', [
+			'oids' => Oid::orderBy('created_at', 'asc')->get()
 		]);
 	}
 
-	// Add new Submap
+	// Add new Oid
 	public function store(Request $request) {
 		$this->validate($request, [
 			'name' => 'required|max:255',
 		]);
 
-		$submap = new Submap;
-		$submap->name = $request->name;
-		$submap->save();
+		$oid = new Oid;
+		$oid->name = $request->name;
+		$oid->save();
 
-		return redirect('/submap');
+		return redirect('/newoid');
 	}
 
-	// Delete Submap
-	public function destroy(Submap $id) {
+	// Delete Oid
+	public function destroy(Oid $id) {
 		$id->delete();
 
-		return redirect('/submap');
+		return redirect('/newoid');
 	}
 
-	// Show Submap Edit Form
-	public function edit(Submap $id) {
+	// Show Oid Edit Form
+	public function edit(Oid $id) {
 
-		return view('submap.edit', ['submap' => $id]);	
+		return view('newoid.edit', ['oid' => $id]);	
 	}
 
-	// Update Submap
+	// Update Oid
 	public function update(Request $request) {
-		$submap = Submap::find($request->id);
-		$submap->name = $request->name;
-		$submap->save();
+		$oid = Oid::find($request->id);
+		$oid->name = $request->name;
+		$oid->save();
 
-		return redirect('/submap');	
+		return redirect('/newoid');	
 	}
 }
