@@ -19,11 +19,11 @@ class NewOidController extends Controller
 	// Add new Oid
 	public function store(Request $request) {
 		$this->validate($request, [
-			'name' => 'required|max:255',
+			'number' => 'required|max:255',
 		]);
 
 		$oid = new Oid;
-		$oid->name = $request->name;
+		$oid->number = $request->number;
 		$oid->save();
 
 		return redirect('/newoid');
@@ -45,7 +45,7 @@ class NewOidController extends Controller
 	// Update Oid
 	public function update(Request $request) {
 		$oid = Oid::find($request->id);
-		$oid->name = $request->name;
+		$oid->number = $request->number;
 		$oid->save();
 
 		return redirect('/newoid');	
