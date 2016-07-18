@@ -84,6 +84,25 @@ Route::group(['middleware' => ['web']], function () {
 	Route::delete('/switchmodel/{id}', 'SwitchModelController@destroy');
 
 	/*
+	 * NEW SWITCH MODEL
+	 */
+
+	// Show New Switch Model Dashboard
+	Route::get('/newswitchmodel', 'NewSwitchModelController@index');
+
+	// Add new New Switch Model 
+	Route::post('/newswitchmodel', 'NewSwitchModelController@store');
+
+	// Edit New Switch Model
+	Route::get('/newswitchmodel/{id}/edit', 'NewSwitchModelController@edit');
+
+	// Update New Switch Model
+	Route::put('/newswitchmodel/{id}', 'NewSwitchModelController@update');
+
+	// Delete New Switch Model
+	Route::delete('/newswitchmodel/{id}', 'NewSwitchModelController@destroy');
+
+	/*
 	 * LINK 
 	 */
 	 

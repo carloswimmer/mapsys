@@ -3,51 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Submap;
+use App\SwitchModel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SubmapController extends Controller
+class NewSwitchModelController extends Controller
 {
-    // Show Submap Dashboard
+    // Show NewSwitchModel Dashboard
 	public function index() {
-		return view('submap.index', [
-			'submaps' => Submap::orderBy('created_at', 'asc')->get()
+		return view('newswitchmodel.index', [
+			'switchModels' => SwitchModel::orderBy('created_at', 'asc')->get()
 		]);
 	}
 
-	// Add new Submap
+	// Add NewSwitchModel
 	public function store(Request $request) {
 		$this->validate($request, [
 			'name' => 'required|max:255',
 		]);
 
-		$submap = new Submap;
-		$submap->name = $request->name;
-		$submap->save();
+		$switchModel = new SwitchModel;
+		$switchModel->name = $request->name;
+		$switchModel->save();
 
-		return redirect('/submap');
+		return redirect('/newswitchmodel');
 	}
 
-	// Delete Submap
-	public function destroy(Submap $id) {
+	// Delete NewSwitchModel
+	public function destroy(SwitchModel $id) {
 		$id->delete();
 
-		return redirect('/submap');
+		return redirect('/newswitchmodel');
 	}
 
-	// Show Submap Edit Form
-	public function edit(Submap $id) {
+	// Show NewSwitchModel Edit Form
+	public function edit(SwitchModel $id) {
 
-		return view('submap.edit', ['submap' => $id]);	
+		return view('newswitchmodel.edit', ['switchModel' => $id]);	
 	}
 
-	// Update Submap
+	// Update NewSwitchModel
 	public function update(Request $request) {
-		$submap = Submap::find($request->id);
-		$submap->name = $request->name;
-		$submap->save();
+		$switchModel = SwitchModel::find($request->id);
+		$switchModel->name = $request->name;
+		$switchModel->save();
 
-		return redirect('/submap');	
+		return redirect('/newswitchmodel');	
 	}
 }
