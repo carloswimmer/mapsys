@@ -5,27 +5,27 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Criar Submapa
+                    Criar Porta
                 </div>
 
                 <div class="panel-body">
                     <!-- Display Validation Errors --> 
                     @include('common.errors')
 
-                    <!-- New Submap Form -->
-                    <form action="{{ url('submap')}}" method="POST" class="form-horizontal">
+                    <!-- New Port Form -->
+                    <form action="{{ url('newport')}}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
-                        <!-- Submap Name -->
+                        <!-- New Port Name -->
                         <div class="form-group">
-                            <label for="submap-name" class="col-sm-3 control-label">Submapa</label>
+                            <label for="port-name" class="col-sm-3 control-label">Porta</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="first" class="form-control" value="{{ old('submap') }}">
+                                <input type="text" name="name" id="first" class="form-control">
                             </div>
                         </div>
 
-                        <!-- Add Submap Button -->
+                        <!-- Add New Port Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-default">
@@ -38,26 +38,26 @@
             </div>
 
             <!-- Current Submap -->
-            @if (count($submaps) > 0)
+            @if (count($ports) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Lista de Submapas
+                        Lista de Portas
                     </div>
 
                     <div class="panel-body">
                         <table class="table table-striped task-table">
                             <thead>
-                                <th>Submapa</th>
+                                <th>Porta</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                @foreach ($submaps as $submap)
+                                @foreach ($ports as $port)
                                     <tr>
-                                        <td class="table-text"><div>{{ $submap->name }}</div></td>
+                                        <td class="table-text"><div>{{ $port->name }}</div></td>
 
-                                        <!-- Submap Delete Button -->
+                                        <!-- Port Delete Button -->
                                         <td>
-                                            <form action="{{ url('submap/'.$submap->id) }}" method="POST">
+                                            <form action="{{ url('newport/'.$port->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -68,9 +68,9 @@
                                             </form>
                                         </td>
 
-                                         <!-- Submap Edit Button -->
+                                         <!-- Port Edit Button -->
                                         <td>
-                                            <form action="{{ url('submap/'.$submap->id.'/edit') }}" method="GET">
+                                            <form action="{{ url('newport/'.$port->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>

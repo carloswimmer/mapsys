@@ -6,7 +6,7 @@
         <div class="col-sm-offset-0 col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Criar Modelo de Switch com detalhes
+                    Modelo de Switch com atributos
                 </div>
 
                 <div class="panel-body">
