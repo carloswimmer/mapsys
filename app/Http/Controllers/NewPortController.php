@@ -3,51 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Submap;
+use App\Port;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SubmapController extends Controller
+class NewPortController extends Controller
 {
-    // Show Submap Dashboard
+    // Show Port Dashboard
 	public function index() {
-		return view('submap.index', [
-			'submaps' => Submap::orderBy('created_at', 'asc')->get()
+		return view('newport.index', [
+			'ports' => Port::orderBy('created_at', 'asc')->get()
 		]);
 	}
 
-	// Add new Submap
+	// Add new Port
 	public function store(Request $request) {
 		$this->validate($request, [
 			'name' => 'required|max:255',
 		]);
 
-		$submap = new Submap;
-		$submap->name = $request->name;
-		$submap->save();
+		$port = new Port;
+		$port->name = $request->name;
+		$port->save();
 
-		return redirect('/submap');
+		return redirect('/newport');
 	}
 
-	// Delete Submap
-	public function destroy(Submap $id) {
+	// Delete Port
+	public function destroy(Port $id) {
 		$id->delete();
 
-		return redirect('/submap');
+		return redirect('/newport');
 	}
 
-	// Show Submap Edit Form
-	public function edit(Submap $id) {
+	// Show Port Edit Form
+	public function edit(Port $id) {
 
-		return view('submap.edit', ['submap' => $id]);	
+		return view('newport.edit', ['port' => $id]);	
 	}
 
-	// Update Submap
+	// Update Port
 	public function update(Request $request) {
-		$submap = Submap::find($request->id);
-		$submap->name = $request->name;
-		$submap->save();
+		$port = Port::find($request->id);
+		$port->name = $request->name;
+		$port->save();
 
-		return redirect('/submap');	
+		return redirect('/newport');	
 	}
 }
