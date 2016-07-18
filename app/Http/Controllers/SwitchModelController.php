@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class SwitchModelController extends Controller
 {
-    // Show SwitchModel Dashboard
+    // Show complete SwitchModel Dashboard
     public function index() {
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
 		$data['ports'] = Port::all();
@@ -20,25 +20,25 @@ class SwitchModelController extends Controller
         return view('switchmodel.index', $data);
     }
 
-    // Add new SwitchModel
+    // Add new complete SwitchModel
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'newname' => 'required|max:255',
             'port' => 'required|max:255',
             'oid' => 'required|max:255',
         ]);
 
 		$oid = new Oid;
 		$oid->number = $request->oid;
-        $oid->save();
+        //$oid->save();
 
 		$port = new Port;
 		$port->name = $request->port;
-        $port->save();
+        //$port->save();
 
         $switchModel = new SwitchModel;
         $switchModel->name = $request->name;
-        $switchModel->save();
+        //$switchModel->save();
 
 		$port->oids()->attach($oid);
 		$switchModel->ports()->attach($port);
@@ -46,7 +46,7 @@ class SwitchModelController extends Controller
         return redirect('/switchmodel');
     }
 
-    // Delete SwitchModel
+    // Delete SwitchModel pivots
     public function destroy($id) {
         SwitchModel::find($id)->delete();
         Port::find($id)->delete();
@@ -55,7 +55,7 @@ class SwitchModelController extends Controller
         return redirect('/switchmodel');
     }
 
-    // Show SwitchModel Edit Form
+    // Show complete SwitchModel Edit Form
     public function edit($id) {
 		$data['switchModel'] = SwitchModel::find($id);
 		$data['port'] = Port::find($id);
@@ -64,7 +64,7 @@ class SwitchModelController extends Controller
         return view('switchmodel.edit', $data);
     }
 
-    // Update SwitchModel
+    // Update complete SwitchModel
     public function update(Request $request) {
         $switchModel = SwitchModel::find($request->id);
         $switchModel->name = $request->name;
