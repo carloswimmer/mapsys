@@ -40,6 +40,13 @@
                             <div class="col-sm-6">
                                 <input type="text" name="port" id="switchmodel-port" class="form-control" value="{{ old('port->name') }}">
                             </div>
+
+							<!-- Button NewPort -->
+							<div class="col-sm-3">
+								<a href="{{ url('newport') }}" class="btn btn-default">
+								<i class="fa fa-btn fa-plus"></i>Novo
+								</a>
+							</div>
                         </div>
 
                          <!-- switchmodel Oid -->
@@ -49,6 +56,13 @@
                             <div class="col-sm-6">
                                 <input type="text" name="oid" id="switchmodel-oid" class="form-control" value="{{ old('oid->number') }}">
                             </div>
+
+							<!-- Button NewOid -->
+							<div class="col-sm-3">
+								<a href="{{ url('newoid') }}" class="btn btn-default">
+								<i class="fa fa-btn fa-plus"></i>Novo
+								</a>
+							</div>
                         </div>
 
                       <!-- Add switchmodel Button -->
