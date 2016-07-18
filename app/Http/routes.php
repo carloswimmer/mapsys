@@ -103,6 +103,44 @@ Route::group(['middleware' => ['web']], function () {
 	Route::delete('/newswitchmodel/{id}', 'NewSwitchModelController@destroy');
 
 	/*
+	 * NEW PORT 
+	 */
+
+	// Show New Port Dashboard
+	Route::get('/newport', 'NewPortController@index');
+
+	// Add new New Port 
+	Route::post('/newport', 'NewPortController@store');
+
+	// Edit New Port
+	Route::get('/newport/{id}/edit', 'NewPortController@edit');
+
+	// Update New Port
+	Route::put('/newport/{id}', 'NewPortController@update');
+
+	// Delete New Port
+	Route::delete('/newport/{id}', 'NewPortController@destroy');
+
+	/*
+	 * NEW OID
+	 */
+
+	// Show New Oid Dashboard
+	Route::get('/newoid', 'NewOidController@index');
+
+	// Add new New Oid 
+	Route::post('/newoid', 'NewOidController@store');
+
+	// Edit New Oid
+	Route::get('/newoid/{id}/edit', 'NewOidController@edit');
+
+	// Update New Oid
+	Route::put('/newoid/{id}', 'NewOidController@update');
+
+	// Delete New Oid
+	Route::delete('/newoid/{id}', 'NewOidController@destroy');
+
+	/*
 	 * LINK 
 	 */
 	 
