@@ -81,7 +81,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::put('/switchmodel/{id}', 'SwitchModelController@update');
 
 	// Delete switchmodel
-	Route::delete('/switchmodel/{id}', 'SwitchModelController@destroy');
+	Route::post('/switchmodel/delete', 'SwitchModelController@detach');
 
 	/*
 	 * NEW SWITCH MODEL

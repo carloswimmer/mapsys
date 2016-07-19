@@ -22,7 +22,12 @@
                             <label for="switchmodel-name" class="col-sm-3 control-label">Modelo</label>
 
                         	<div class="col-sm-6">
-                            	<input type="text" name="name" id="first" class="form-control" value="{{ old('switchmodel->name') }}">
+								<select name="switchModel" id="first" class="form-control">
+									<option value="" selected></option>
+									@foreach ($switchModels as $switchModel)
+										<option value="{{ $switchModel->id }}">{{ $switchModel->name }}</option>
+									@endforeach
+								</select>
                         	</div>
 
 							<!-- Button newSwitchModel -->
@@ -38,7 +43,12 @@
                             <label for="switchmodel-port" class="col-sm-3 control-label">Porta</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="port" id="switchmodel-port" class="form-control" value="{{ old('port->name') }}">
+								<select name="port" id="port" class="form-control">
+									<option value="" selected></option>
+									@foreach ($ports as $port)
+										<option value="{{ $port->id }}">{{ $port->name }}</option>
+									@endforeach
+								</select>
                             </div>
 
 							<!-- Button NewPort -->
@@ -54,7 +64,12 @@
                             <label for="switchmodel-oid" class="col-sm-3 control-label">Oid</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="oid" id="switchmodel-oid" class="form-control" value="{{ old('oid->number') }}">
+								<select name="oid" id="oid" class="form-control">
+									<option value="" selected></option>
+									@foreach ($oids as $oid)
+										<option value="{{ $oid->id }}">{{ $oid->number }}</option>
+									@endforeach
+								</select>
                             </div>
 
 							<!-- Button NewOid -->
@@ -100,26 +115,18 @@
 		                                        <td class="table-text"><div>{{ $switchModel->name }}</div></td>
 		                                        <td class="table-text"><div>{{ $port->name }}</div></td>
 		                                        <td class="table-text"><div>{{ $oid->number }}</div></td>
+
 		                                        <!-- switchmodel Delete Button -->
 		                                        <td>
-		                                            <form action="{{ url('switchmodel/'.$switchModel->id) }}" method="POST">
+		                                            <form action="{{ url('switchmodel/delete') }}" method="POST">
 		                                                {{ csrf_field() }}
-		                                                {{ method_field('DELETE') }}
 		
+														<input type="hidden" name="switchModel" value="{{ $switchModel->id }}">
+														<input type="hidden" name="port" value="{{ $port->id }}">
+														<input type="hidden" name="oid" value="{{ $oid->id }}">
 		                                                <button type="submit" class="btn btn-danger">
 		                                                    <i class="fa fa-btn fa-trash"></i>
 															Deletar
-		                                                </button>
-		                                            </form>
-		                                        </td>
-		
-		                                         <!-- switchmodel Edit Button -->
-		                                        <td>
-		                                            <form action="{{ url('switchmodel/'.$switchModel->id.'/edit') }}" method="GET">
-		
-		                                                <button type="submit" class="btn btn-default">
-		                                                    <i class="fa fa-btn fa-pencil"></i>
-															Editar
 		                                                </button>
 		                                            </form>
 		                                        </td>

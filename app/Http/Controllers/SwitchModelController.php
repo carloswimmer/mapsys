@@ -14,8 +14,8 @@ class SwitchModelController extends Controller
     // Show complete SwitchModel Dashboard
     public function index() {
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
-		$data['ports'] = Port::all();
-		$data['oids'] = Oid::all();
+		$data['ports'] = Port::orderBy('name', 'asc')->get();
+		$data['oids'] = Oid::orderBy('number', 'asc')->get();
 
         return view('switchmodel.index', $data);
     }
@@ -23,22 +23,14 @@ class SwitchModelController extends Controller
     // Add new complete SwitchModel
     public function store(Request $request) {
         $this->validate($request, [
-            'newname' => 'required|max:255',
-            'port' => 'required|max:255',
-            'oid' => 'required|max:255',
+            'switchModel' => 'required',
+            'port' => 'required',
+            'oid' => 'required',
         ]);
 
-		$oid = new Oid;
-		$oid->number = $request->oid;
-        //$oid->save();
-
-		$port = new Port;
-		$port->name = $request->port;
-        //$port->save();
-
-        $switchModel = new SwitchModel;
-        $switchModel->name = $request->name;
-        //$switchModel->save();
+		$switchModel = SwitchModel::find($request->switchModel);
+		$port = Port::find($request->port);
+		$oid = Oid::find($request->oid);
 
 		$port->oids()->attach($oid);
 		$switchModel->ports()->attach($port);
@@ -47,22 +39,25 @@ class SwitchModelController extends Controller
     }
 
     // Delete SwitchModel pivots
-    public function destroy($id) {
-        SwitchModel::find($id)->delete();
-        Port::find($id)->delete();
-        Oid::find($id)->delete();
+    public function detach(Request $request) {
+        $switchModel = SwitchModel::find($request->switchModel);
+        $port = Port::find($request->port);
+        $oid = Oid::find($request->oid);
+
+		$port->oids()->detach($oid);
+		$switchModel->ports()->detach($port);
 
         return redirect('/switchmodel');
     }
 
     // Show complete SwitchModel Edit Form
-    public function edit($id) {
-		$data['switchModel'] = SwitchModel::find($id);
-		$data['port'] = Port::find($id);
-		$data['oid'] = Oid::find($id);
-
-        return view('switchmodel.edit', $data);
-    }
+    //public function edit($id) {
+	//	$data['switchModel'] = SwitchModel::find($id);
+	//	$data['port'] = Port::find($id);
+	//	$data['oid'] = Oid::find($id);
+	//
+    //    return view('switchmodel.edit', $data);
+    //}
 
     // Update complete SwitchModel
     public function update(Request $request) {
