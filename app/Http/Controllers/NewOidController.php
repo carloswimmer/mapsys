@@ -12,7 +12,7 @@ class NewOidController extends Controller
     // Show Oid Dashboard
 	public function index() {
 		return view('newoid.index', [
-			'oids' => Oid::orderBy('created_at', 'asc')->get()
+			'oids' => Oid::orderBy('number', 'asc')->get()
 		]);
 	}
 

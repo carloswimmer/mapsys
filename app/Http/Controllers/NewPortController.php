@@ -12,7 +12,7 @@ class NewPortController extends Controller
     // Show Port Dashboard
 	public function index() {
 		return view('newport.index', [
-			'ports' => Port::orderBy('created_at', 'asc')->get()
+			'ports' => Port::orderBy('name', 'asc')->get()
 		]);
 	}
 

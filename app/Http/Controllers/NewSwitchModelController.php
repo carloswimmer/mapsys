@@ -12,7 +12,7 @@ class NewSwitchModelController extends Controller
     // Show NewSwitchModel Dashboard
 	public function index() {
 		return view('newswitchmodel.index', [
-			'switchModels' => SwitchModel::orderBy('created_at', 'asc')->get()
+			'switchModels' => SwitchModel::orderBy('name', 'asc')->get()
 		]);
 	}
 
