@@ -56,7 +56,7 @@
                                         <td class="table-text"><div>{{ $switchModel->name }}</div></td>
 
                                         <!-- SwitchModel Delete Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('newswitchmodel/'.$switchModel->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -69,7 +69,7 @@
                                         </td>
 
                                          <!-- NewSwitchModel Edit Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('newswitchmodel/'.$switchModel->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">

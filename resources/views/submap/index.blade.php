@@ -56,7 +56,7 @@
                                         <td class="table-text"><div>{{ $submap->name }}</div></td>
 
                                         <!-- Submap Delete Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('submap/'.$submap->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -69,7 +69,7 @@
                                         </td>
 
                                          <!-- Submap Edit Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('submap/'.$submap->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">

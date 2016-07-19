@@ -56,7 +56,7 @@
                                         <td class="table-text"><div>{{ $oid->number }}</div></td>
 
                                         <!-- Oid Delete Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('newoid/'.$oid->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -69,7 +69,7 @@
                                         </td>
 
                                          <!-- Oid Edit Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('newoid/'.$oid->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">

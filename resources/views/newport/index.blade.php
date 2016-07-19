@@ -56,7 +56,7 @@
                                         <td class="table-text"><div>{{ $port->name }}</div></td>
 
                                         <!-- Port Delete Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('newport/'.$port->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -69,7 +69,7 @@
                                         </td>
 
                                          <!-- Port Edit Button -->
-                                        <td>
+                                        <td class="text-right">
                                             <form action="{{ url('newport/'.$port->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">

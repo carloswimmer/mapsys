@@ -117,7 +117,7 @@
 		                                        <td class="table-text"><div>{{ $oid->number }}</div></td>
 
 		                                        <!-- switchmodel Delete Button -->
-		                                        <td>
+		                                        <td class="text-right">
 		                                            <form action="{{ url('switchmodel/delete') }}" method="POST">
 		                                                {{ csrf_field() }}
 		
