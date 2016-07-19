@@ -5,7 +5,7 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Editar Submapa
+                    Editar Oid
                 </div>
 
                 <div class="panel-body">
@@ -13,16 +13,16 @@
                     @include('common.errors')
 
                     <!-- New Submap Form -->
-                    <form action="{{ url('submap/'.$submap->id) }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('newoid/'.$oid->id) }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 						{{ method_field('PUT') }}
 
                         <!-- Submap Name -->
                         <div class="form-group">
-                            <label for="submap-name" class="col-sm-3 control-label">Submapa</label>
+                            <label for="new-oid-name" class="col-sm-3 control-label">Submapa</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="first-edit" class="form-control" value="{{  $submap->name }}">
+                                <input type="text" name="number" id="first-edit" class="form-control" value="{{  $oid->number }}">
                             </div>
                         </div>
 
