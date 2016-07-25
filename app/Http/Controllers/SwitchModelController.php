@@ -44,6 +44,8 @@ class SwitchModelController extends Controller
         $port = Port::find($request->port);
         $oid = Oid::find($request->oid);
 
+
+
 		$port->oids()->detach($oid);
 		$switchModel->ports()->detach($port);
 

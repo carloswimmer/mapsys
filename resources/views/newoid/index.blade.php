@@ -27,10 +27,15 @@
 
                         <!-- Add Oid Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-3 col-sm-3">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-btn fa-plus"></i>Salvar
                                 </button>
+                            </div>
+							<div class="col-sm-3">
+                                <a href="{{ url('switchmodel') }}" class="btn btn-default">
+                                    <i class="fa fa-btn fa-arrow-left"></i>Voltar
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -110,28 +110,27 @@
                             <tbody>
                                 @foreach ($switchModels as $switchModel)
                                 	@foreach ($switchModel->ports as $port)
-                                		@foreach ($port->oids as $oid)
-		                                    <tr>
-		                                        <td class="table-text"><div>{{ $switchModel->name }}</div></td>
-		                                        <td class="table-text"><div>{{ $port->name }}</div></td>
-		                                        <td class="table-text"><div>{{ $oid->number }}</div></td>
+										@foreach ($port->oids as $oid)
+		                                <tr>
+		                                    <td class="table-text"><div>{{ $switchModel->name }}</div></td>
+		                                    <td class="table-text"><div>{{ $port->name }}</div></td>
 
-		                                        <!-- switchmodel Delete Button -->
-		                                        <td class="text-right">
-		                                            <form action="{{ url('switchmodel/delete') }}" method="POST">
-		                                                {{ csrf_field() }}
-		
-														<input type="hidden" name="switchModel" value="{{ $switchModel->id }}">
-														<input type="hidden" name="port" value="{{ $port->id }}">
-														<input type="hidden" name="oid" value="{{ $oid->id }}">
-		                                                <button type="submit" class="btn btn-danger">
-		                                                    <i class="fa fa-btn fa-trash"></i>
-															Deletar
-		                                                </button>
-		                                            </form>
-		                                        </td>
-		                                    </tr>
-                                		@endforeach
+		                                    <!-- switchmodel Delete Button -->
+		                                    <td class="text-right">
+		                                        <form action="{{ url('switchmodel/delete') }}" method="POST">
+		                                            {{ csrf_field() }}
+	
+													<input type="hidden" name="switchModel" value="{{ $switchModel->id }}">
+													<input type="hidden" name="port" value="{{ $port->id }}">
+													<input type="hidden" name="oid" value="{{ $oid->id }}">
+		                                            <button type="submit" class="btn btn-danger">
+		                                                <i class="fa fa-btn fa-trash"></i>
+														Deletar
+		                                            </button>
+		                                        </form>
+		                                    </td>
+		                                </tr>
+										@endforeach
                                 	@endforeach
                                 @endforeach
                             </tbody>
