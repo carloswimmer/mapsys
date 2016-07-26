@@ -16,6 +16,7 @@ use App\Host;
 use App\SwitchModel;
 use App\Port;
 use App\Oid;
+use App\PortPlusOid;
 use App\Link;
 use Illuminate\Http\Request;
 
@@ -120,6 +121,25 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Delete New Port
 	Route::delete('/newport/{id}', 'NewPortController@destroy');
+
+	/*
+	 * PORT PLUS OID
+	 */
+
+	// Show Port Plus Oid Dashboard
+	Route::get('/portplusoid', 'PortPlusOidController@index');
+
+	// Add new Port Plus Oid
+	Route::post('/portplusoid', 'PortPlusOidController@store');
+
+	// Edit Port Plus Oid
+	Route::get('/portplusoid/{id}/edit', 'PortPlusOidController@edit');
+
+	// Update Port Plus Oid
+	Route::put('/portplusoid/{id}', 'PortPlusOidController@update');
+
+	// Delete Port Plus Oid
+	Route::delete('/portplusoid/{id}', 'PortPlusOidController@destroy');
 
 	/*
 	 * NEW OID

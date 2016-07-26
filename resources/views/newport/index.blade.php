@@ -33,7 +33,7 @@
                                 </button>
                             </div>
 							<div class="col-sm-3">
-                                <a href="{{ url('switchmodel') }}" class="btn btn-default">
+                                <a href="{{ url('portplusoid') }}" class="btn btn-default">
                                     <i class="fa fa-btn fa-arrow-left"></i>Voltar
                                 </a>
                             </div>

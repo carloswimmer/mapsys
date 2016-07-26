@@ -3,47 +3,26 @@
 @section('content')
 	<!-- Content  -->
     <div class="container">
-        <div class="col-sm-offset-0 col-sm-12">
+        <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Modelo de Switch com atributos
+                    Porta com Oid
                 </div>
 
                 <div class="panel-body">
                     <!-- Display Validation Errors --> 
                     @include('common.errors')
 
-                    <!-- New switchmodel Form -->
-                    <form action="{{ url('switchmodel')}}" method="POST" class="form-horizontal">
+                    <!-- New Port Plus Oid Form -->
+                    <form action="{{ url('portplusoid')}}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
-                        <!-- switchmodel Name -->
-                        <div class="form-group">
-                            <label for="switchmodel-name" class="col-sm-3 control-label">Modelo</label>
-
-                        	<div class="col-sm-6">
-								<select name="switchModel" id="first" class="form-control">
-									<option value="" selected></option>
-									@foreach ($switchModels as $switchModel)
-										<option value="{{ $switchModel->id }}">{{ $switchModel->name }}</option>
-									@endforeach
-								</select>
-                        	</div>
-
-							<!-- Button newSwitchModel -->
-							<div class="col-sm-3">
-								<a href="{{ url('newswitchmodel') }}" class="btn btn-default">
-								<i class="fa fa-btn fa-plus"></i>Novo
-								</a>
-							</div>
-                        </div>
-
-                         <!-- switchmodel Port -->
+                         <!-- New Port -->
                         <div class="form-group">
                             <label for="switchmodel-port" class="col-sm-3 control-label">Porta</label>
 
                             <div class="col-sm-6">
-								<select name="port" id="port" class="form-control">
+								<select name="port" id="first" class="form-control">
 									<option value="" selected></option>
 									@foreach ($ports as $port)
 										<option value="{{ $port->id }}">{{ $port->name }}</option>
@@ -51,15 +30,15 @@
 								</select>
                             </div>
 
-							<!-- Button Port Plus Oid -->
+							<!-- Button NewPort -->
 							<div class="col-sm-3">
-								<a href="{{ url('portplusoid') }}" class="btn btn-default">
-								Porta &nbsp;<i class="fa fa-btn fa-plus"></i>Oid
+								<a href="{{ url('newport') }}" class="btn btn-default">
+								<i class="fa fa-btn fa-plus"></i>Novo
 								</a>
 							</div>
                         </div>
 
-                         <!-- switchmodel Oid -->
+                         <!-- New Oid -->
                         <div class="form-group">
                             <label for="switchmodel-oid" class="col-sm-3 control-label">Oid</label>
 
@@ -72,50 +51,57 @@
 								</select>
                             </div>
 
-							                        </div>
+							<!-- Button NewOid -->
+							<div class="col-sm-3">
+								<a href="{{ url('newoid') }}" class="btn btn-default">
+								<i class="fa fa-btn fa-plus"></i>Novo
+								</a>
+							</div>
+                        </div>
 
-                      <!-- Add switchmodel Button -->
+                      <!-- Add Port Plus Oid Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-3 col-sm-3">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-btn fa-plus"></i>Salvar
                                 </button>
                             </div>
+							<div class="col-sm-3">
+								<a href="{{ url('switchmodel') }}" class="btn btn-default">
+									<i class="fa fa-btn fa-arrow-left"></i>Voltar
+								</a>
+							</div>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <!-- Current switchmodel -->
-            @if (count($switchModels) > 0)
+            <!-- Current Port Plus Oid -->
+            @if (count($portPlusOids) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Lista de Modelos de Switch
+                        Lista de Portas com Oids
                     </div>
 
                     <div class="panel-body">
                         <table class="table table-striped task-table">
                             <thead>
-                                <th>Modelo</th>
                                 <th>Porta</th>
                                 <th>Oid</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                @foreach ($switchModels as $switchModel)
-                                	@foreach ($switchModel->ports as $port)
+                                @foreach ($portPlusOids as $portPlusOid)
 		                                <tr>
-		                                    <td class="table-text"><div>{{ $switchModel->name }}</div></td>
-		                                    <td class="table-text"><div>{{ $port->name }}</div></td>
+		                                    <td class="table-text"><div>{{ $portPlusOid->port->name }}</div></td>
+		                                    <td class="table-text"><div>{{ $portPlusOid->oid->number }}</div></td>
 
-		                                    <!-- switchmodel Delete Button -->
+		                                    <!-- Port Plus Oid Delete Button -->
 		                                    <td class="text-right">
-		                                        <form action="{{ url('switchmodel/delete') }}" method="POST">
+		                                        <form action="{{ url('portplusoid/'.$portPlusOid->id) }}" method="POST">
 		                                            {{ csrf_field() }}
+													{{ method_field('DELETE') }}
 	
-													<input type="hidden" name="switchModel" value="{{ $switchModel->id }}">
-													<input type="hidden" name="port" value="{{ $port->id }}">
-													<input type="hidden" name="oid" value="{{ $oid->id }}">
 		                                            <button type="submit" class="btn btn-danger">
 		                                                <i class="fa fa-btn fa-trash"></i>
 														Deletar
@@ -123,7 +109,6 @@
 		                                        </form>
 		                                    </td>
 		                                </tr>
-                                	@endforeach
                                 @endforeach
                             </tbody>
                         </table>
