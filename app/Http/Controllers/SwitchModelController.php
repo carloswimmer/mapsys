@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\SwitchModel;
 use App\Port;
 use App\Oid;
+use App\PortPlusOid;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -52,6 +53,14 @@ class SwitchModelController extends Controller
         return redirect('/switchmodel');
     }
 
+	// Call Oid value to input
+	public function callOid($port) {
+		$portPlusOids = PortPlusOid::find($port);
+		$oidPort = $portPlusOids->oid->id;
+		
+		return $oidPort;
+	}
+
     // Show complete SwitchModel Edit Form
     //public function edit($id) {
 	//	$data['switchModel'] = SwitchModel::find($id);
@@ -62,20 +71,20 @@ class SwitchModelController extends Controller
     //}
 
     // Update complete SwitchModel
-    public function update(Request $request) {
-        $switchModel = SwitchModel::find($request->id);
-        $switchModel->name = $request->name;
-        $switchModel->save();
+    //public function update(Request $request) {
+    //    $switchModel = SwitchModel::find($request->id);
+    //    $switchModel->name = $request->name;
+    //    $switchModel->save();
 
-		$port = Port::find($request->id);
-        $port->name = $request->port;
-		$port->save();
+	//	$port = Port::find($request->id);
+    //    $port->name = $request->port;
+	//	$port->save();
 
-        $oid = Oid::find($request->id);
-		$oid->number = $request->oid;
-		$oid->save();
+    //    $oid = Oid::find($request->id);
+	//	$oid->number = $request->oid;
+	//	$oid->save();
 
-        return redirect('/switchmodel');
-    }
+    //    return redirect('/switchmodel');
+    //}
 
 }

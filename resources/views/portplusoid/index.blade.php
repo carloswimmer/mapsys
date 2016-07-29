@@ -17,7 +17,7 @@
                     <form action="{{ url('portplusoid')}}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
-                         <!-- New Port -->
+                         <!-- Combining Port -->
                         <div class="form-group">
                             <label for="switchmodel-port" class="col-sm-3 control-label">Porta</label>
 
@@ -38,7 +38,7 @@
 							</div>
                         </div>
 
-                         <!-- New Oid -->
+                         <!-- Combining Oid -->
                         <div class="form-group">
                             <label for="switchmodel-oid" class="col-sm-3 control-label">Oid</label>
 

@@ -84,6 +84,9 @@ Route::group(['middleware' => ['web']], function () {
 	// Delete switchmodel
 	Route::post('/switchmodel/delete', 'SwitchModelController@detach');
 
+	// Call oid value
+	Route::get('/switchmodel/calloid', 'SwitchModelController@callOid');
+
 	/*
 	 * NEW SWITCH MODEL
 	 */
