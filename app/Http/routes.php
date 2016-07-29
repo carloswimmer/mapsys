@@ -85,7 +85,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/switchmodel/delete', 'SwitchModelController@detach');
 
 	// Call oid value
-	Route::get('/switchmodel/calloid', 'SwitchModelController@callOid');
+	Route::get('/switchmodel/{portPlusOidId}', 'SwitchModelController@callOid');
 
 	/*
 	 * NEW SWITCH MODEL
@@ -167,19 +167,19 @@ Route::group(['middleware' => ['web']], function () {
 	 * LINK 
 	 */
 	 
-	// Show link Dashboard
-	Route::get('/link', 'LinkController@index');
+	//// Show link Dashboard
+	//Route::get('/link', 'LinkController@index');
 	
-	// Add new link
-	Route::post('/link', 'LinkController@store');
+	//// Add new link
+	//Route::post('/link', 'LinkController@store');
 
-	// Edit link
-	Route::get('/link/{id}/edit', 'LinkController@edit');
+	//// Edit link
+	//Route::get('/link/{id}/edit', 'LinkController@edit');
 
-	// Update link
-	Route::put('/link/{id}', 'LinkController@update');
+	//// Update link
+	//Route::put('/link/{id}', 'LinkController@update');
 
-	// Delete link
-	Route::delete('/link/{id}', 'LinkController@destroy');
+	//// Delete link
+	//Route::delete('/link/{id}', 'LinkController@destroy');
 
 });

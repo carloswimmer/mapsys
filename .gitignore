@@ -4,8 +4,5 @@
 .env
 resources/assets/vendor
 resources/assets/js/external
-public/css
-public/js
-public/fonts
 resources/lang/pt-BR
 composer.lock

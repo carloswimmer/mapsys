@@ -17,6 +17,7 @@ class SwitchModelController extends Controller
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
 		$data['ports'] = Port::orderBy('name', 'asc')->get();
 		$data['oids'] = Oid::orderBy('number', 'asc')->get();
+		$data['portPlusOids'] = PortPlusOid::orderBy('id', 'asc')->get();
 
         return view('switchmodel.index', $data);
     }
@@ -54,11 +55,11 @@ class SwitchModelController extends Controller
     }
 
 	// Call Oid value to input
-	public function callOid($port) {
-		$portPlusOids = PortPlusOid::find($port);
-		$oidPort = $portPlusOids->oid->id;
+	public function callOid($portPlusOidId) {
+		$portPlusOids = PortPlusOid::find($portPlusOidId);
+		$oid = $portPlusOids->oid;
 		
-		return $oidPort;
+		return response()->json($oid);
 	}
 
     // Show complete SwitchModel Edit Form

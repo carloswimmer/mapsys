@@ -43,10 +43,10 @@
                             <label for="switchmodel-port" class="col-sm-3 control-label">Porta</label>
 
                             <div class="col-sm-6">
-								<select name="port" id="port" class="form-control">
+								<select name="port" id="port-plus-oid" class="form-control">
 									<option value="" selected></option>
-									@foreach ($ports as $port)
-										<option value="{{ $port->id }}">{{ $port->name }}</option>
+									@foreach ($portPlusOids as $portPlusOid)
+										<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
 									@endforeach
 								</select>
                             </div>
@@ -64,15 +64,10 @@
                             <label for="switchmodel-oid" class="col-sm-3 control-label">Oid</label>
 
                             <div class="col-sm-6">
-								<select name="oid" id="oid" class="form-control">
-									<option value="" selected></option>
-									@foreach ($oids as $oid)
-										<option value="{{ $oid->id }}">{{ $oid->number }}</option>
-									@endforeach
-								</select>
+								<input type="text" name="oid" id="oid" class="form-control" value=""/>
                             </div>
 
-							                        </div>
+						 </div>
 
                       <!-- Add switchmodel Button -->
                         <div class="form-group">
