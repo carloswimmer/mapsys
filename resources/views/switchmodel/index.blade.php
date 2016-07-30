@@ -110,7 +110,7 @@
 	
 													<input type="hidden" name="switchModel" value="{{ $switchModel->id }}">
 													<input type="hidden" name="port" value="{{ $port->id }}">
-													<input type="hidden" name="oid" value="{{ $oid->id }}">
+													<input type="hidden" name="oid" value="{{ $port->id }}">
 		                                            <button type="submit" class="btn btn-danger">
 		                                                <i class="fa fa-btn fa-trash"></i>
 														Deletar

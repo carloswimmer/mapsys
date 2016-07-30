@@ -93,8 +93,8 @@
                             <tbody>
                                 @foreach ($portPlusOids as $portPlusOid)
 		                                <tr>
-		                                    <td class="table-text"><div>{{ $portPlusOid->port->name }}</div></td>
-		                                    <td class="table-text"><div>{{ $portPlusOid->oid->number }}</div></td>
+		                                    <td class="table-text"><div>{{ $portPlusOid->name }}</div></td>
+		                                    <td class="table-text"><div>{{ $portPlusOid->number }}</div></td>
 
 		                                    <!-- Port Plus Oid Delete Button -->
 		                                    <td class="text-right">

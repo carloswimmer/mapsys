@@ -13,7 +13,8 @@ class PortPlusOidController extends Controller
 {
     // Show Port Plus Oid Dashboard
     public function index() {
-		$data['portPlusOids'] = PortPlusOid::orderBy('id', 'asc')->get();
+		//$data['portPlusOids'] = PortPlusOid::orderBy('id', 'asc')->get();
+		$data['portPlusOids'] = \DB::table('port_plus_oids')->join('ports', 'ports.id', '=', 'port_plus_oids.port_id')->join('oids', 'oids.id', '=', 'port_plus_oids.oid_id')->select('port_plus_oids.*', 'ports.name', 'oids.number')->orderBy('name', 'asc')->get();
 		$data['ports'] = Port::orderBy('name', 'asc')->get();
 		$data['oids'] = Oid::orderBy('number', 'asc')->get();
 
@@ -31,8 +32,6 @@ class PortPlusOidController extends Controller
 		$oid = Oid::find($request->oid);
 		
 		$portPlusOid = new PortPlusOid;
-		//$port->portPlusOids()->associate($portPlusOid);
-		//$oid->portPlusOids()->associate($portPlusOid);
 		$portPlusOid->port()->associate($port);
 		$portPlusOid->oid()->associate($oid);
 		$portPlusOid->save();
