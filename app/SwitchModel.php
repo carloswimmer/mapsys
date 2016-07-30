@@ -3,15 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Port;
-use App\Oid;
+use App\PortPlusOid;
 
 class SwitchModel extends Model
 {
 	protected $fillable = ['name'];
 
-    // Ports that belong to switch.
-	public function ports() {
-		return $this->belongsToMany(Port::class);
+    // Combination of ports and oids that belong to switch model
+	public function portPlusOids() {
+		return $this->belongsToMany(PortPlusOid::class);
 	}
 }

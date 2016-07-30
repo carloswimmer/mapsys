@@ -43,7 +43,7 @@
                             <label for="switchmodel-port" class="col-sm-3 control-label">Porta</label>
 
                             <div class="col-sm-6">
-								<select name="port" id="port-plus-oid" class="form-control">
+								<select name="portPlusOid" id="portPlusOid" class="form-control">
 									<option value="" selected></option>
 									@foreach ($portPlusOids as $portPlusOid)
 										<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->name }}</option>
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Current switchmodel -->
-            @if (count($switchModels) > 0)
+            @if (count($portPlusOidSwitchModels) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Lista de Modelos de Switch
@@ -98,10 +98,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($switchModels as $switchModel)
-                                	@foreach ($switchModel->ports as $port)
+                                	@foreach ($switchModel->portPlusOids as $portPlusOid)
 		                                <tr>
 		                                    <td class="table-text"><div>{{ $switchModel->name }}</div></td>
-		                                    <td class="table-text"><div>{{ $port->name }}</div></td>
+		                                    <td class="table-text"><div>{{ $portPlusOid->port->name }}</div></td>
+		                                    <td class="table-text"><div>{{ $portPlusOid->oid->number }}</div></td>
 
 		                                    <!-- switchmodel Delete Button -->
 		                                    <td class="text-right">
@@ -109,8 +110,7 @@
 		                                            {{ csrf_field() }}
 	
 													<input type="hidden" name="switchModel" value="{{ $switchModel->id }}">
-													<input type="hidden" name="port" value="{{ $port->id }}">
-													<input type="hidden" name="oid" value="{{ $port->id }}">
+													<input type="hidden" name="portPlusOid" value="{{ $portPlusOid->id }}">
 		                                            <button type="submit" class="btn btn-danger">
 		                                                <i class="fa fa-btn fa-trash"></i>
 														Deletar
