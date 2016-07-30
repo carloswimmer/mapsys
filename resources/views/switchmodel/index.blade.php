@@ -46,7 +46,7 @@
 								<select name="port" id="port-plus-oid" class="form-control">
 									<option value="" selected></option>
 									@foreach ($portPlusOids as $portPlusOid)
-										<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
+										<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->name }}</option>
 									@endforeach
 								</select>
                             </div>

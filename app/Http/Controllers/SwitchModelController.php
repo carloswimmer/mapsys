@@ -17,8 +17,8 @@ class SwitchModelController extends Controller
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
 		$data['ports'] = Port::orderBy('name', 'asc')->get();
 		$data['oids'] = Oid::orderBy('number', 'asc')->get();
-		//$data['portPlusOids'] = \DB::table('port_plus_oids')->join('ports', 'port_plus_oids.port_id', '=', 'ports.id')->select('port_plus_oids.*', 'ports.name')->orderBy('name', 'asc')->get();
-		$data['portPlusOids'] = PortPlusOid::orderBy('port_id', 'asc')->get();
+		$data['portPlusOids'] = \DB::table('port_plus_oids')->join('ports', 'port_plus_oids.port_id', '=', 'ports.id')->join('oids', 'oids.id', '=', 'port_plus_oids.oid_id')->select('port_plus_oids.*', 'ports.name', 'oids.number')->orderBy('name', 'asc')->get();
+		//$data['portPlusOids'] = PortPlusOid::orderBy('port_id', 'asc')->get();
 
         return view('switchmodel.index', $data);
     }
