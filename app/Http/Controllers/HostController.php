@@ -47,7 +47,7 @@ class HostController extends Controller
     }
 
 	// Show Host Edit Form
-    public function edit(Host $id) {
+    public function edit($id) {
 		$data['host'] = Host::find($id);
 		$data['submaps'] = Submap::orderBy('name', 'asc')->get();
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
@@ -61,11 +61,11 @@ class HostController extends Controller
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
 
-		$switchModel = new SwitchModel;
-		$switchModel = SwitchModel::find($request->switchmodel_id);
+		//$switchModel = new SwitchModel;
+		$switchModel = SwitchModel::find($request->switchi_model_id);
 		$host->switchModel()->associate($switchModel);
 
-		$submap = new Submap;
+		//$submap = new Submap;
 		$submap = Submap::find($request->submap_id);
 		$host->submap()->associate($submap);
 

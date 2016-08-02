@@ -108,7 +108,7 @@
 
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>
-                                                                                                        Deletar
+														Deletar
                                                 </button>
                                             </form>
                                         </td>
@@ -119,7 +119,7 @@
 
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>
-                                                                                                        Editar
+														Editar
                                                 </button>
                                             </form>
                                         </td> 

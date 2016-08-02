@@ -37,12 +37,13 @@
 
 						<!-- Host Switchmodel -->
                         <div class="form-group">
-                            <label for="host-switchmodel" class="col-sm-3 control-label">Switchmodel</label>
+                            <label for="host-switchmodel" class="col-sm-3 control-label">Modelo</label>
 
                             <div class="col-sm-6">
-                                <select name="switchmodel_id" id="host-switchmodel" class="form-control" value="{{ old('host') }}">
-                                    @foreach ($switchmodels as $switchmodel)
-                                        <option value={{ $switchmodel->id }}>{{ $switchmodel->name }}</option>
+                                <select name="switch_model_id" id="host-switchmodel" class="form-control"> 
+                                <option value="{{ $host->switchModel->id }}" selected>{{ $host->switchModel->name }}</option>
+                                    @foreach ($switchModels as $switchModel)
+                                        <option value="{{ $switchModel->id }}">{{ $switchModel->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -53,9 +54,10 @@
                             <label for="host-submap" class="col-sm-3 control-label">Submapa</label>
 
                             <div class="col-sm-6">
-                                <select name="submap_id" id="host-submap" class="form-control" value="{{ old('host') }}">
+                                <select name="submap_id" id="host-submap" class="form-control" >
+                                <option value="{{ $host->submap->id }}" selected>{{ $host->submap->name }}</option>
                                     @foreach ($submaps as $submap)
-                                        <option value={{ $submap->id }}>{{ $submap->name }}</option>
+                                        <option value="{{ $submap->id }}">{{ $submap->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
