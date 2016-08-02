@@ -10,13 +10,13 @@ class Host extends Model
 {
     //
 
-	protected $fillable = ['submap_id', 'elementid', 'name', 'switchmodel_id'];
+	protected $fillable = ['submap_id', 'elementid', 'name', 'switch_model_id'];
 
 	public function submap() {
 		return $this->belongsTo(Submap::class);
 	}
 
-	public function switchmodel() {
-		return $this->belongsTo(Switchmodel::class);	
+	public function switchModel() {
+		return $this->belongsTo(SwitchModel::class);	
 	}
 }

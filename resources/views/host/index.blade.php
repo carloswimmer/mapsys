@@ -36,12 +36,13 @@
 
 						<!-- Host Switchmodel -->
 						<div class="form-group">
-							<label for="host-switchmodel" class="col-sm-3 control-label">Switchmodel</label>
+							<label for="host-switchmodel" class="col-sm-3 control-label">Modelo</label>
 
 							<div class="col-sm-6">
-								<select name="switchmodel_id" id="host-switchmodel" class="form-control" >
-									@foreach ($switchmodels as $switchmodel)
-										<option value="{{ $switchmodel->id }}">{{ $switchmodel->name }}</option>
+								<select name="switch_model_id" id="host-switchmodel" class="form-control" >
+									<option value="" selected></option>
+									@foreach ($switchModels as $switchModel)
+										<option value="{{ $switchModel->id }}">{{ $switchModel->name }}</option>
 									@endforeach
 								</select>
 							</div>
@@ -54,6 +55,7 @@
 
 							<div class="col-sm-6">
 								<select name="submap_id" id="host-submap" class="form-control" value="{{ old('host') }}">
+									<option value="" selected></option>
 									@foreach ($submaps as $submap)
 										<option value={{ $submap->id }}>{{ $submap->name }}</option>
 									@endforeach
@@ -94,7 +96,7 @@
                                 @foreach ($hosts as $host)
                                         <td class="table-text"><div>{{ $host->elementid }}</div></td>
                                         <td class="table-text"><div>{{ $host->name }}</div></td>
-                                        <td class="table-text"><div>{{ $host->switchmodel->name }}</div></td>
+                                        <td class="table-text"><div>{{ $host->switchModel->name }}</div></td>
                                         <td class="table-text"><div>{{ $host->submap->name }}</div></td>
 	
 

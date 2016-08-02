@@ -26,11 +26,11 @@ class HostController extends Controller
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
 
-		$switchModel = new SwitchModel;
+		//$switchModel = new SwitchModel;
 		$switchModel = SwitchModel::find($request->switch_model_id);
 		$host->switchModel()->associate($switchModel);
 
-		$submap = new Submap;
+		//$submap = new Submap;
 		$submap = Submap::find($request->submap_id);
 		$host->submap()->associate($submap);
 
