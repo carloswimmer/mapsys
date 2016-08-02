@@ -12,7 +12,6 @@ class CreateSwitchModelsTable extends Migration
      */
     public function up()
     {
-		Schema::enableForeignKeyConstraints();
         Schema::create('switch_models', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');

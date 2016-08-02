@@ -15,10 +15,10 @@ class SwitchModelController extends Controller
     // Show complete SwitchModel Dashboard
     public function index() {
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
-		$data['ports'] = Port::orderBy('name', 'asc')->get();
-		$data['oids'] = Oid::orderBy('number', 'asc')->get();
-		//$data['portPlusOids'] = \DB::table('port_plus_oids')->join('ports', 'port_plus_oids.port_id', '=', 'ports.id')->select('port_plus_oids.*', 'ports.name')->orderBy('name', 'asc')->get();
-		$data['portPlusOids'] = PortPlusOid::orderBy('port_id', 'asc')->get();
+		//$data['ports'] = Port::orderBy('name', 'asc')->get();
+		//$data['oids'] = Oid::orderBy('number', 'asc')->get();
+		$data['portPlusOids'] = \DB::table('port_plus_oids')->join('ports', 'port_plus_oids.port_id', '=', 'ports.id')->join('oids', 'oids.id', '=', 'port_plus_oids.oid_id')->select('port_plus_oids.*', 'ports.name', 'oids.number')->orderBy('name', 'asc')->get();
+		$data['portPlusOidSwitchModels'] = \DB::table('port_plus_oid_switch_model')->first();  
 
         return view('switchmodel.index', $data);
     }
@@ -27,16 +27,16 @@ class SwitchModelController extends Controller
     public function store(Request $request) {
         $this->validate($request, [
             'switchModel' => 'required',
-            'port' => 'required',
-            'oid' => 'required',
+            'portPlusOid' => 'required',
+            //'oid' => 'required',
         ]);
 
 		$switchModel = SwitchModel::find($request->switchModel);
-		$port = Port::find($request->port);
-		$oid = Oid::find($request->oid);
+		$portPlusOid = PortPlusOid::find($request->portPlusOid);
+		//$oid = Oid::find($request->oid);
 
-		$port->oids()->attach($oid);
-		$switchModel->ports()->attach($port);
+		//$port->oids()->attach($oid);
+		$switchModel->portPlusOids()->attach($portPlusOid);
 
         return redirect('/switchmodel');
     }
@@ -44,13 +44,11 @@ class SwitchModelController extends Controller
     // Delete SwitchModel pivots
     public function detach(Request $request) {
         $switchModel = SwitchModel::find($request->switchModel);
-        $port = Port::find($request->port);
-        $oid = Oid::find($request->oid);
+        $portPlusOid = PortPlusOid::find($request->portPlusOid);
+        //$oid = Oid::find($request->oid);
 
-
-
-		$port->oids()->detach($oid);
-		$switchModel->ports()->detach($port);
+		//$port->oids()->detach($oid);
+		$switchModel->portPlusOids()->detach($portPlusOid);
 
         return redirect('/switchmodel');
     }
