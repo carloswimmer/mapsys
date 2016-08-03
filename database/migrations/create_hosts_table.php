@@ -21,8 +21,8 @@ class CreateHostsTable extends Migration
 			$table->string('name');
             $table->timestamps();
 
-			$table->foreign('submap_id')->references('id')->on('submaps');
-			$table->foreign('switch_model_id')->references('id')->on('switch_models');
+			$table->foreign('submap_id')->references('id')->on('submaps')->onDelete('cascade');
+			$table->foreign('switch_model_id')->references('id')->on('switch_models')->onDelete('cascade');
         });
     }
 
