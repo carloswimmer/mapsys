@@ -22,7 +22,7 @@
                             <label for="host-elementid" class="col-sm-3 control-label">Elementid</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="elementid" id="host-elementid" class="form-control" value="{{  $host->elementid }}">
+                                <input type="text" name="elementid" id="first" class="form-control" value="{{  $host->elementid }}">
                             </div>
                         </div>
 

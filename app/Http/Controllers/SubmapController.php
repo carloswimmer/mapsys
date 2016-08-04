@@ -19,7 +19,7 @@ class SubmapController extends Controller
 	// Add new Submap
 	public function store(Request $request) {
 		$this->validate($request, [
-			'name' => 'required|max:255',
+			'name' => 'required|max:255'
 		]);
 
 		$submap = new Submap;

@@ -20,7 +20,7 @@ use App\PortPlusOid;
 use App\Link;
 use Illuminate\Http\Request;
 
-Route::group(['middleware' => ['web']], function () {
+//Route::group(['middleware' => ['web']], function () {
 
 	// Show initial page
 	Route::get('/', 'AplicationController@index');
@@ -182,4 +182,4 @@ Route::group(['middleware' => ['web']], function () {
 	//// Delete link
 	//Route::delete('/link/{id}', 'LinkController@destroy');
 
-});
+//});

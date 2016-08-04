@@ -22,6 +22,13 @@ class HostController extends Controller
 
 	// Add new Host
 	public function store(Request $request) {
+		$this->validate($request, [
+			'elementid' => 'required',
+			'name' => 'required',
+			'switch_model_id' => 'required',
+			'submap_id' => 'required',
+		]);
+
 		$host = new Host;
 		$host->elementid = $request->elementid;
 		$host->name = $request->name;
@@ -62,7 +69,7 @@ class HostController extends Controller
 		$host->name = $request->name;
 
 		//$switchModel = new SwitchModel;
-		$switchModel = SwitchModel::find($request->switchi_model_id);
+		$switchModel = SwitchModel::find($request->switch_model_id);
 		$host->switchModel()->associate($switchModel);
 
 		//$submap = new Submap;
