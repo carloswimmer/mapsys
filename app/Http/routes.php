@@ -17,7 +17,8 @@ use App\SwitchModel;
 use App\Port;
 use App\Oid;
 use App\PortPlusOid;
-use App\Link;
+use App\LinkA;
+use App\LinkB;
 use Illuminate\Http\Request;
 
 //Route::group(['middleware' => ['web']], function () {
@@ -167,11 +168,11 @@ use Illuminate\Http\Request;
 	 * LINK 
 	 */
 	 
-	//// Show link Dashboard
-	//Route::get('/link', 'LinkController@index');
+	// Show link Dashboard
+	Route::get('/link', 'LinkController@index');
 	
-	//// Add new link
-	//Route::post('/link', 'LinkController@store');
+	// Add new link
+	Route::post('/link', 'LinkController@store');
 
 	//// Edit link
 	//Route::get('/link/{id}/edit', 'LinkController@edit');

@@ -5,7 +5,7 @@
 		<div class="col-sm-offset-0 col-sm-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Criar Host
+					Criar Link
 				</div>
 
 				<div class="panel-body">
@@ -13,7 +13,7 @@
 					@include('common.errors')
 
 					<!-- New Link Form -->
-					<form action="{{ url('host') }}" method="POST" class="form-horizontal">
+					<form action="{{ url('link') }}" method="POST" class="form-horizontal">
 						{{ csrf_field() }}
 
 						<!-- Link Host A -->
@@ -21,9 +21,10 @@
 							<label for="link-host-a" class="col-sm-3 control-label">Host A</label>
 
 							<div class="col-sm-6">
-								<select name="host_id" id="link-host-a" class="form-control" value="{{ old('host') }}">
+								<select name="hostA" id="first" class="form-control">
+									<option value="" selected></option>
 									@foreach ($hosts as $host)
-										<option value={{ $host->id }}>{{ $host->name }}</option>
+										<option value="{{ $host->id }}">{{ $host->name }}</option>
 									@endforeach
 								</select>
 							</div>
@@ -34,10 +35,13 @@
 							<label for="link-port-a" class="col-sm-3 control-label">Porta A</label>
 
 							<div class="col-sm-6">
-								<select name="switchmodel_id" id="link-port-a" class="form-control" value="{{ old('host') }}">
-									@foreach ($hosts as $host)
-										<option value={{ $host->switchmodel->id }}>{{ $host->switchmodel->port }}</option>
-									@endforeach
+								<select name="portPlusOidA" id="link-port-a" class="form-control">
+									<option value="" selected></option>
+										@foreach ($switchModels as $switchModel)
+											@foreach ($portPlusOids as $portPlusOid)
+												<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
+											@endforeach
+										@endforeach
 								</select>
 							</div>
 						</div>
@@ -47,9 +51,10 @@
 							<label for="link-host-b" class="col-sm-3 control-label">Host B</label>
 
 							<div class="col-sm-6">
-								<select name="host_id" id="link-host-b" class="form-control" value="{{ old('host') }}">
+								<select name="hostB" id="host-port-b" class="form-control">
+									<option value="" selected></option>
 									@foreach ($hosts as $host)
-										<option value={{ $host->id }}>{{ $host->name }}</option>
+										<option value="{{ $host->id }}">{{ $host->name }}</option>
 									@endforeach
 								</select>
 							</div>
@@ -60,10 +65,13 @@
 							<label for="link-port-b" class="col-sm-3 control-label">Porta B</label>
 
 							<div class="col-sm-6">
-								<select name="switchmodel_id" id="link-port-b" class="form-control" value="{{ old('host') }}">
-									@foreach ($hosts as $host)
-										<option value={{ $host->switchmodel->id }}>{{ $host->switchmodel->port }}</option>
-									@endforeach
+								<select name="portPlusOidB" id="link-port-b" class="form-control">
+									<option value="" selected></option>
+										@foreach ($switchModels as $switchModel)
+											@foreach ($portPlusOids as $portPlusOid)
+												<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
+											@endforeach
+										@endforeach
 								</select>
 							</div>
 						</div>
@@ -81,7 +89,7 @@
 			</div>
 
             <!-- Current Host -->
-            @if (count($links) > 0)
+            @if (count($linkAs) > 0)
                 <div class="panel panel-default"> 
                 <!-- <div class="container-fluid"> -->
                     <div class="panel-heading">
