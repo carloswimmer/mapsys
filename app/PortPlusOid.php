@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Port;
 use App\Oid;
 use App\SwitchModel;
+use App\LinkA;
+use App\LinkB;
 
 class PortPlusOid extends Model
 {
@@ -22,4 +24,13 @@ class PortPlusOid extends Model
 	public function switchModels() {
 		return $this->belongsToMany(SwitchModel::class);
 	}
+
+	public function linkA() {
+		return $this->hasMany(LinkA::class);
+	}
+
+	public function linkB() {
+		return $this->hasMany(LinkB::class);
+	}
+
 }
