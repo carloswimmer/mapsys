@@ -14,14 +14,12 @@ class CreateLinkAsTable extends Migration
     {
         Schema::create('link_as', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('host_id')->unsigned()->nullable();
-            $table->increments('port_plus_oid_id')->unsigned()->nullable();
-            $table->increments('link_b_id')->unsigned()->nullable();
+            $table->integer('host_id')->unsigned()->nullable();
+            $table->integer('port_plus_oid_id')->unsigned()->nullable();
             $table->timestamps();
 
 			$table->foreign('host_id')->references('id')->on('hosts')->onDelete('cascade');
 			$table->foreign('port_plus_oid_id')->references('id')->on('port_plus_oids')->onDelete('cascade');
-			$table->foreign('link_b_id')->references('id')->on('link_bs')->onDelete('cascade');
         });
     }
 
