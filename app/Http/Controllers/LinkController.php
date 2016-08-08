@@ -29,8 +29,15 @@ class LinkController extends Controller
 	// Call PortPlusOids to select
 	public function callPortPlusOids($hostId) {
 		$host = Host::find($hostId);
-		$switchModel = $host->switchModel->id;
-		$portPlusOids = SwitchModel::find($switchModel);
+		$hostSwitchModel = $host->switchModel->id;
+		//$switchModel = SwitchModel::find($hostSwitchModel);
+		//$portPlusOids = $switchModel->portPlusOids;
+		$portPlusOids = \DB::table('port_plus_oids')
+			->join('port_plus_oid_switch_model', 'port_plus_oids.id', '=', 'port_plus_oid_switch_model.port_plus_oid_id')
+			->join('ports', 'ports.id', '=', 'port_plus_oids.port_id')
+			->select('port_plus_oids.id', 'ports.name')
+			->where('switch_model_id', '=', $hostSwitchModel)
+			->get();
 
 		return response()->json($portPlusOids);
 	} 

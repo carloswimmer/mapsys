@@ -37,9 +37,6 @@
 							<div class="col-sm-6">
 								<select name="portPlusOidA" id="link-port-a" class="form-control">
 									<option value="" selected></option>
-											@foreach ($portPlusOids as $portPlusOid)
-												<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
-											@endforeach
 								</select>
 							</div>
 						</div>
@@ -65,11 +62,6 @@
 							<div class="col-sm-6">
 								<select name="portPlusOidB" id="link-port-b" class="form-control">
 									<option value="" selected></option>
-										@foreach ($switchModels as $switchModel)
-											@foreach ($portPlusOids as $portPlusOid)
-												<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
-											@endforeach
-										@endforeach
 								</select>
 							</div>
 						</div>
