@@ -37,11 +37,9 @@
 							<div class="col-sm-6">
 								<select name="portPlusOidA" id="link-port-a" class="form-control">
 									<option value="" selected></option>
-										@foreach ($switchModels as $switchModel)
 											@foreach ($portPlusOids as $portPlusOid)
 												<option value="{{ $portPlusOid->id }}">{{ $portPlusOid->port->name }}</option>
 											@endforeach
-										@endforeach
 								</select>
 							</div>
 						</div>
@@ -146,4 +144,10 @@
 
 		</div>
 	</div>
+@endsection
+
+@section('scripts')
+	
+	<script type="text/javascript" src="{{ URL::asset('js/linkFilter.js') }}"></script>
+
 @endsection

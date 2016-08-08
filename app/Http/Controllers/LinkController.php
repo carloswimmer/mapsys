@@ -26,6 +26,15 @@ class LinkController extends Controller
 		return view('link.index', $data);
 	}
 
+	// Call PortPlusOids to select
+	public function callPortPlusOids($hostId) {
+		$host = Host::find($hostId);
+		$switchModel = $host->switchModel->id;
+		$portPlusOids = SwitchModel::find($switchModel);
+
+		return response()->json($portPlusOids);
+	} 
+
 	// Add new Link
 	public function store(Request $request) {
 		$this->validate($request, [

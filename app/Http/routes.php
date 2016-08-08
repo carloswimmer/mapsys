@@ -171,6 +171,9 @@ use Illuminate\Http\Request;
 	// Show link Dashboard
 	Route::get('/link', 'LinkController@index');
 	
+	// Call portPlusOids to select
+	Route::get('/link/{hostId}', 'LinkController@callPortPlusOids');
+
 	// Add new link
 	Route::post('/link', 'LinkController@store');
 
