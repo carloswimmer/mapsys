@@ -30,8 +30,6 @@ class LinkController extends Controller
 	public function callPortPlusOids($hostId) {
 		$host = Host::find($hostId);
 		$hostSwitchModel = $host->switchModel->id;
-		//$switchModel = SwitchModel::find($hostSwitchModel);
-		//$portPlusOids = $switchModel->portPlusOids;
 		$portPlusOids = \DB::table('port_plus_oids')
 			->join('port_plus_oid_switch_model', 'port_plus_oids.id', '=', 'port_plus_oid_switch_model.port_plus_oid_id')
 			->join('ports', 'ports.id', '=', 'port_plus_oids.port_id')
@@ -51,11 +49,30 @@ class LinkController extends Controller
 			'portPlusOidB' => 'required',
 		]);
 
-		$submap = new Submap;
-		$submap->name = $request->name;
-		$submap->save();
+		$linkA = new LinkA;
+		$linkA->host_id = $request->hostA;
+		$linkA->port_plus_oid_id = $request->portPlusOidA;
 
-		return redirect('/submap');
+		$hostA = Host::find($request->hostA);
+		$linkA->host()->associate($hostA);
+		$portPlusOidA = PortPlusOid::find($request->portPlusOidA);
+		$linkA->portPlusOid()->associate($portPlusOidA);
+
+		$linkA->save();
+
+		$linkB = new LinkB;
+		$linkB->host_id = $request->hostB;
+		$linkB->port_plus_oid_id = $request->portPlusOidB;
+
+		$hostB = Host::find($request->hostB);
+		$linkB->host()->associate($hostB);
+		$portPlusOidB = PortPlusOid::find($request->portPlusOidB);
+		$linkB->portPlusOid()->associate($portPlusOidB);
+		$linkB->linkA()->associate($linkA);
+
+		$linkB->save();
+
+		return redirect('/link');
 	}
 
 	// Delete Submap

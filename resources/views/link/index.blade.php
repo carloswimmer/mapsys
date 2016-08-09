@@ -95,13 +95,14 @@
 								<th>Porta B</th>
                                 <th>&nbsp;</th>
                             </thead>
+
                             <tbody>
-                                @foreach ($hosts as $host)
-                                        <td class="table-text"><div>{{ $host->elementid }}</div></td>
-                                        <td class="table-text"><div>{{ $host->name }}</div></td>
-                                        <td class="table-text"><div>{{ $host->switchmodel->name }}</div></td>
-                                        <td class="table-text"><div>{{ $host->submap->name }}</div></td>
-	
+                                @foreach ($linkAs as $linkA)
+									<tr>
+                                        <td class="table-text"><div>{{ $linkA->host->name }}</div></td>
+                                        <td class="table-text"><div>{{ $linkA->portPlusOid->port->name }}</div></td>
+                                        <td class="table-text"><div>{{ $linkA->linkB->host->name }}</div></td>
+                                        <td class="table-text"><div>{{ $linkA->linkB->portPlusOid->port->name }}</div></td>
 
 										<!-- Host Delete Button -->
 										<td>
@@ -111,7 +112,7 @@
 
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>
-                                                                                                        Deletar
+														Deletar
                                                 </button>
                                             </form>
                                         </td>
@@ -122,11 +123,11 @@
 
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>
-                                                                                                        Editar
+														Editar
                                                 </button>
                                             </form>
                                         </td> 
-                                    </tr>
+									</tr>
                                 @endforeach
                             </tbody>
                         </table>
