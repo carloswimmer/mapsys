@@ -27,15 +27,15 @@
 
                         <!-- Add Oid Button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-3">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Salvar
-                                </button>
-                            </div>
-							<div class="col-sm-3">
+                            <div class="col-sm-3 text-right">
                                 <a href="{{ url('portplusoid') }}" class="btn btn-default">
                                     <i class="fa fa-btn fa-arrow-left"></i>Voltar
                                 </a>
+                            </div>
+							<div class="col-sm-6">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-btn fa-plus"></i>Salvar
+                                </button>
                             </div>
                         </div>
                     </form>
