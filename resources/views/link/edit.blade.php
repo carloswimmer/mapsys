@@ -84,6 +84,6 @@
 
 @section('scripts')
 
-	<script type="text/javascript" src="{{ URL::asset('js/linkFilter.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/linkFilterEdit.js') }}"></script>
 
 @endsection
