@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#first').change(function() {
-		$.get('/mapsys/link/' + hostId(), handle);
+		$.get('/mapsys/link/call/' + hostId(), handle);
 		function hostId() {
 			return $('#first').val();
 		}
@@ -9,12 +9,11 @@ $(document).ready(function() {
 			$(data).each(function(index) {
 				$('#link-port-a').append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
 			});
-			console.log(data[0]);
 		}
 	});
 
 	$('#host-port-b').change(function() {
-		$.get('/mapsys/link/' + hostId(), handle);
+		$.get('/mapsys/link/call/' + hostId(), handle);
 		function hostId() {
 			return $('#host-port-b').val();
 		}
@@ -23,7 +22,6 @@ $(document).ready(function() {
 			$(data).each(function(index) {
 				$('#link-port-b').append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
 			});
-			console.log(data[0]);
 		}
 	});
 

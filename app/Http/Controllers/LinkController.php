@@ -17,7 +17,6 @@ class LinkController extends Controller
     // Show Link Dashboard
 	public function index() {
 		$data['hosts'] = Host::orderBy('name', 'asc')->get();
-		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
 		$data['portPlusOids'] = PortPlusOid::orderBy('id', 'asc')->get();
 		$data['ports'] = Port::orderBy('name', 'asc')->get();
 		$data['linkAs'] = LinkA::orderBy('created_at', 'desc')->get();
@@ -75,25 +74,43 @@ class LinkController extends Controller
 		return redirect('/link');
 	}
 
-	// Delete Submap
-	public function destroy(Submap $id) {
-		$id->delete();
+	// Delete Link
+	public function destroy(Request $request) {
+		$linkA = LinkA::find($request->id);
+		$linkB = LinkB::find($linkA->LinkB->id);
+		$linkB->delete();
+		$linkA->delete();
 
-		return redirect('/submap');
+		return redirect('/link');
 	}
 
-	// Show Submap Edit Form
-	public function edit(Submap $id) {
+	// Show Link Edit Form
+	public function edit($id) {
+		$data['linkA'] = LinkA::find($id);
+		$data['hosts'] = Host::orderBy('name', 'asc')->get();
+		$data['portPlusOids'] = PortPlusOid::orderBy('id', 'asc')->get();
+		$data['ports'] = Port::orderBy('name', 'asc')->get();
+		$data['linkAs'] = LinkA::orderBy('created_at', 'desc')->get();
+		$data['linkBs'] = LinkB::orderBy('created_at', 'desc')->get();
 
-		return view('submap.edit', ['submap' => $id]);	
+
+		return view('link.edit', $data);	
 	}
 
-	// Update Submap
+	// Update Link
 	public function update(Request $request) {
-		$submap = Submap::find($request->id);
-		$submap->name = $request->name;
-		$submap->save();
+		$linkA = LinkA::find($request->id);
+		$linkA->host_id = $request->hostA;
+		$linkA->port_plus_oid_id = $request->portPlusOidA;
 
-		return redirect('/submap');	
+		$linkA->save();
+
+		$linkB = LinkB::find($linkA->linkB->id);
+		$linkB->host_id = $request->hostB;
+		$linkB->port_plus_oid_id = $request->portPlusOidB;
+
+		$linkB->save();
+
+		return redirect('/link');
 	}
 }

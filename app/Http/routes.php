@@ -172,18 +172,18 @@ use Illuminate\Http\Request;
 	Route::get('/link', 'LinkController@index');
 	
 	// Call portPlusOids to select
-	Route::get('/link/{hostId}', 'LinkController@callPortPlusOids');
+	Route::get('/link/call/{hostId}', 'LinkController@callPortPlusOids');
 
 	// Add new link
 	Route::post('/link', 'LinkController@store');
 
-	//// Edit link
-	//Route::get('/link/{id}/edit', 'LinkController@edit');
+	// Edit link
+	Route::get('/link/{id}/edit', 'LinkController@edit');
 
-	//// Update link
-	//Route::put('/link/{id}', 'LinkController@update');
+	// Update link
+	Route::put('/link/{id}', 'LinkController@update');
 
-	//// Delete link
-	//Route::delete('/link/{id}', 'LinkController@destroy');
+	// Delete link
+	Route::delete('/link/{id}', 'LinkController@destroy');
 
 //});

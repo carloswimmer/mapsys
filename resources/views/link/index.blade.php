@@ -106,7 +106,7 @@
 
 										<!-- Host Delete Button -->
 										<td>
-                                            <form action="{{ url('host/'.$host->id) }}" method="POST">
+                                            <form action="{{ url('link/'.$linkA->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -119,7 +119,7 @@
 
                                         <!-- Host Edit Button -->
                                         <td>
-                                            <form action="{{ url('host/'.$host->id.'/edit') }}" method="GET">
+                                            <form action="{{ url('link/'.$linkA->id.'/edit') }}" method="GET">
 
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fa fa-btn fa-pencil"></i>

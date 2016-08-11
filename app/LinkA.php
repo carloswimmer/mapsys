@@ -9,6 +9,8 @@ use App\LinkB;
 
 class LinkA extends Model
 {
+	protected $fillable = ['host_id', 'port_plus_oid_id'];
+
     public function host() {
 		return $this->belongsTo(Host::class);
 	}

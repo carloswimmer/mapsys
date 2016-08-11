@@ -8,71 +8,82 @@
                     Editar Host
                 </div>
 
-                <div class="panel-body">
-                    <!-- Display Validation Errors -->
-                    @include('common.errors')
+				<div class="panel-body">
+					<!-- Display Validation Errors -->
+					@include('common.errors')
 
-                    <!-- New Host Form -->
-                    <form action="{{ url('host/'.$host->id) }}" method="POST" class="form-horizontal">
-                        {{ csrf_field() }}
-                        {{ method_field('PUT') }}
+					<!-- New Link Form -->
+					<form action="{{ url('link/'.$linkA->id) }}" method="POST" class="form-horizontal">
+						{{ csrf_field() }}
+						{{ method_field('PUT') }}
 
-                        <!-- Host Elementid -->
-                        <div class="form-group">
-                            <label for="host-elementid" class="col-sm-3 control-label">Elementid</label>
+						<!-- Link Host A -->
+						<div class="form-group">
+							<label for="link-host-a" class="col-sm-3 control-label">Host A</label>
 
-                            <div class="col-sm-6">
-                                <input type="text" name="elementid" id="host-elementid" class="form-control" value="{{  $host->elementid }}">
-                            </div>
-                        </div>
+							<div class="col-sm-6">
+								<select name="hostA" id="first" class="form-control">
+									<option value="{{ $linkA->host->id }}" selected>{{ $linkA->host->name }}</option>
+									@foreach ($hosts as $host)
+										<option value="{{ $host->id }}">{{ $host->name }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
 
- 						<!-- Host Name -->
-                        <div class="form-group">
-                            <label for="host-name" class="col-sm-3 control-label">Host</label>
+						<!-- Link Port A -->
+						<div class="form-group">
+							<label for="link-port-a" class="col-sm-3 control-label">Porta A</label>
 
-                            <div class="col-sm-6">
-                                <input type="text" name="name" id="host-name" class="form-control" value="{{  $host->name }}">
-                            </div>
-                        </div>
+							<div class="col-sm-6">
+								<select name="portPlusOidA" id="link-port-a" class="form-control">
+									<option value="{{ $linkA->portPlusOid->id }}" selected>{{ $linkA->portPlusOid->port->name }}</option>
+								</select>
+							</div>
+						</div>
 
-						<!-- Host Switchmodel -->
-                        <div class="form-group">
-                            <label for="host-switchmodel" class="col-sm-3 control-label">Switchmodel</label>
+						<!-- Link Host B -->
+						<div class="form-group">
+							<label for="link-host-b" class="col-sm-3 control-label">Host B</label>
 
-                            <div class="col-sm-6">
-                                <select name="switchmodel_id" id="host-switchmodel" class="form-control" value="{{ old('host') }}">
-                                    @foreach ($switchmodels as $switchmodel)
-                                        <option value={{ $switchmodel->id }}>{{ $switchmodel->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+							<div class="col-sm-6">
+								<select name="hostB" id="host-port-b" class="form-control">
+									<option value="{{ $linkA->linkB->host->id }}" selected>{{ $linkA->linkB->host->name }}</option>
+									@foreach ($hosts as $host)
+										<option value="{{ $host->id }}">{{ $host->name }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
 
-                        <!-- Host Submap -->
-                        <div class="form-group">
-                            <label for="host-submap" class="col-sm-3 control-label">Submapa</label>
+						<!-- Link Port B -->
+						<div class="form-group">
+							<label for="link-port-b" class="col-sm-3 control-label">Porta B</label>
 
-                            <div class="col-sm-6">
-                                <select name="submap_id" id="host-submap" class="form-control" value="{{ old('host') }}">
-                                    @foreach ($submaps as $submap)
-                                        <option value={{ $submap->id }}>{{ $submap->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+							<div class="col-sm-6">
+								<select name="portPlusOidB" id="link-port-b" class="form-control">
+									<option value="{{ $linkA->linkB->portPlusOid->id }}" selected>{{ $linkA->linkB->portPlusOid->port->name }}</option>
+								</select>
+							</div>
+						</div>
 
-                        <!-- Add Host Button -->
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-floppy-o"></i>Salvar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+						<!-- Add Host Button -->
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-6">
+								<button type="submit" class="btn btn-default">
+									<i class="fa fa-btn fa-floppy-o"></i>Salvar
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
             </div>
-
         </div>
     </div>
+@endsection
+
+@section('scripts')
+
+	<script type="text/javascript" src="{{ URL::asset('js/linkFilter.js') }}"></script>
+
 @endsection
