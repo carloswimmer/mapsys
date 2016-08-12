@@ -1,5 +1,10 @@
 $(document).ready(function() {
+	if($('#first').val() == '') {
+		$('#link-port-a').prop('disabled', true);
+		$('#link-port-b').prop('disabled', true);
+	}
 	$('#first').change(function() {
+		$('#link-port-a').prop('disabled', false);
 		$.get('/mapsys/link/call/' + hostId(), handle);
 		function hostId() {
 			return $('#first').val();
@@ -13,6 +18,7 @@ $(document).ready(function() {
 	});
 
 	$('#host-port-b').change(function() {
+		$('#link-port-b').prop('disabled', false);
 		$.get('/mapsys/link/call/' + hostId(), handle);
 		function hostId() {
 			return $('#host-port-b').val();
