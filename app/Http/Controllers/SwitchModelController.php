@@ -15,7 +15,7 @@ class SwitchModelController extends Controller
     // Show complete SwitchModel Dashboard
     public function index() {
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
-		//$data['ports'] = Port::orderBy('name', 'asc')->get();
+		$data['ports'] = Port::orderBy('name', 'asc')->get();
 		//$data['oids'] = Oid::orderBy('number', 'asc')->get();
 		$data['portPlusOids'] = \DB::table('port_plus_oids')
 			->join('ports', 'port_plus_oids.port_id', '=', 'ports.id')
@@ -33,7 +33,7 @@ class SwitchModelController extends Controller
         $this->validate($request, [
             'switchModel' => 'required',
             'portPlusOid' => 'required',
-            //'oid' => 'required',
+            'port' => 'required',
         ]);
 
 		$switchModel = SwitchModel::find($request->switchModel);
@@ -59,11 +59,16 @@ class SwitchModelController extends Controller
     }
 
 	// Call Oid value to input
-	public function callOid($portPlusOidId) {
-		$portPlusOids = PortPlusOid::find($portPlusOidId);
-		$oid = $portPlusOids->oid;
+	public function callOid($portId) {
+		//$port = Port::find($portId);
+		$oids = \DB::table('port_plus_oids')
+			->join('oids', 'port_plus_oids.oid_id', '=', 'oids.id')
+			->select('port_plus_oids.id', 'oids.number')
+			->where('port_id', '=', $portId)
+			->orderBy('number', 'asc')
+			->get();
 		
-		return response()->json($oid);
+		return response()->json($oids);
 	}
 
     // Show complete SwitchModel Edit Form

@@ -1,10 +1,10 @@
 $(document).ready(function() {
 	if($('#first').val() == '') {
-		$('#link-port-a').prop('disabled', true);
-		$('#link-port-b').prop('disabled', true);
+		$('#hole-link-port-a').hide();
+		$('#hole-link-port-b').hide();
 	}
 	$('#first').change(function() {
-		$('#link-port-a').prop('disabled', false);
+		$('#hole-link-port-a').fadeIn('slow');
 		$.get('/mapsys/link/call/' + hostId(), handle);
 		function hostId() {
 			return $('#first').val();
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	});
 
 	$('#host-port-b').change(function() {
-		$('#link-port-b').prop('disabled', false);
+		$('#hole-link-port-b').fadeIn('slow');
 		$.get('/mapsys/link/call/' + hostId(), handle);
 		function hostId() {
 			return $('#host-port-b').val();

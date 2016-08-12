@@ -31,7 +31,7 @@
 						</div>
 
 						<!-- Link Port A -->
-						<div class="form-group">
+						<div class="form-group" id="hole-link-port-a">
 							<label for="link-port-a" class="col-sm-3 control-label">Porta A</label>
 
 							<div class="col-sm-6">
@@ -56,7 +56,7 @@
 						</div>
 
 						<!-- Link Port B -->
-						<div class="form-group">
+						<div class="form-group" id="hole-link-port-b">
 							<label for="link-port-b" class="col-sm-3 control-label">Porta B</label>
 
 							<div class="col-sm-6">
