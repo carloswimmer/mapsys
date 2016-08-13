@@ -50,7 +50,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class="fa fa-globe fa-lg" aria-hidden="true">  </i>  Mapsys Zabbix
+                    <i class="fa fa-globe fa-lg" aria-hidden="true"></i>&nbsp; Mapsys Zabbix
                 </a>
             </div>
 
