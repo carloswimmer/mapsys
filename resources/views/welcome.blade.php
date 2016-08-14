@@ -14,7 +14,8 @@
 					@include('common.errors')
 
 					<!-- Generator Form -->
-					<form action="{{ url('generator') }}" method="GET" class="form-horizontal">
+					<form action="{{ url('generator') }}" method="POST" class="form-horizontal">
+                        {{ csrf_field() }}
 
 						<!-- Submap Picker -->
 						<div class="form-group">

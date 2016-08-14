@@ -26,7 +26,8 @@ use Illuminate\Http\Request;
 	// Show initial page
 	Route::get('/', 'AplicationController@index');
 
-	// Route::resource('submap', 'SubmapController', ['except' => ['create', 'show']]);
+	// Generate and Download Submap.xml
+	Route::post('/generator', 'GeneratorController@doDownload');
 
 	/*
 	 * SUBMAP
