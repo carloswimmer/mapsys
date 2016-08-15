@@ -25,11 +25,11 @@ class PortPlusOid extends Model
 		return $this->belongsToMany(SwitchModel::class);
 	}
 
-	public function linkA() {
+	public function linkAs() {
 		return $this->hasMany(LinkA::class);
 	}
 
-	public function linkB() {
+	public function linkBs() {
 		return $this->hasMany(LinkB::class);
 	}
 

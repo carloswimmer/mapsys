@@ -20,11 +20,11 @@ class Host extends Model
 		return $this->belongsTo(Submap::class);
 	}
 
-	public function linkA() {
+	public function linkAs() {
 		return $this->hasMany(LinkA::class);
 	}
 
-	public function linkB() {
+	public function linkBs() {
 		return $this->hasMany(LinkB::class);
 	}
 }
