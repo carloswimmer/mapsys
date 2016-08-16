@@ -9,6 +9,7 @@ use App\PortPlusOid;
 use App\Port;
 use App\LinkA;
 use App\LinkB;
+use App\Submap;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -70,6 +71,21 @@ class LinkController extends Controller
 		$linkB->linkA()->associate($linkA);
 
 		$linkB->save();
+
+		$submapA = $linkA->host->submap->id;
+		$submapB = $linkB->host->submap->id;
+		if($submapA != $submapB) {
+			$linkC = new LinkA;
+			$linkC->host_id = $linkB->host_id;
+			$linkC->port_plus_oid_id = $linkB->port_plus_oid_id;
+			$linkC->save();
+			
+			$linkD = new LinkB;
+			$linkD->host_id = $linkA->host_id;
+			$linkD->port_plus_oid_id = $linkA->port_plus_oid_id;
+			$linkD->link_a_id = $linkC->id;
+			$linkD->save();
+		}
 
 		return redirect('/link');
 	}

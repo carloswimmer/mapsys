@@ -24,9 +24,11 @@ class GeneratorController extends Controller
 
 		//$xml->addAttribute('version', '1.0');
 
-		$xml = new \SimpleXMLElement('<zabbix_export/>');
+		$xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><zabbix_export/>');
 		$xml->addChild('version', '3.0');
-		$xml->addChild('date', date('Y-m-d H:i:s'));
+		$dateRaw = date('c');
+		$dateZ = substr_replace($dateRaw, 'Z', 19);
+		$xml->addChild('date', $dateZ);
 
 		$images = $xml->addChild('images');
 			$image = $images->addChild('image');
