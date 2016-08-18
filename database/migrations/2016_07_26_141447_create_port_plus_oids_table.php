@@ -19,8 +19,8 @@ class CreatePortPlusOidsTable extends Migration
 			$table->integer('oid_id')->unsigned()->nullable();
             $table->timestamps();
 
-			$table->foreign('port_id')->references('id')->on('ports');
-			$table->foreign('oid_id')->references('id')->on('oids');
+			$table->foreign('port_id')->references('id')->on('ports')->onDelete('cascade');
+			$table->foreign('oid_id')->references('id')->on('oids')->onDelete('cascade');
         });
     }
 
