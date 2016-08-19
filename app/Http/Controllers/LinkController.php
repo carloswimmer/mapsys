@@ -35,6 +35,7 @@ class LinkController extends Controller
 			->join('ports', 'ports.id', '=', 'port_plus_oids.port_id')
 			->select('port_plus_oids.id', 'ports.name')
 			->where('switch_model_id', '=', $hostSwitchModel)
+			->orderBy('ports.name', 'asc')
 			->get();
 
 		return response()->json($portPlusOids);
