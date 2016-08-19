@@ -34,7 +34,7 @@
                             </div>
 							<div class="col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Salvar
+                                    <i class="fa fa-btn fa-floppy-o"></i>Salvar
                                 </button>
 
                             </div>
