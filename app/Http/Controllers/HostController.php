@@ -13,7 +13,7 @@ class HostController extends Controller
 {
     // Show Host Dashboard
 	public function index() {
-		$data['hosts'] = Host::orderBy('created_at', 'desc')->get();
+		$data['hosts'] = Host::orderBy('elementid', 'desc')->get();
 		$data['submaps'] = Submap::orderBy('name', 'asc')->get();
 		$data['switchModels'] = SwitchModel::orderBy('name', 'asc')->get();
 		

@@ -23,7 +23,7 @@
 
                         	<div class="col-sm-6">
 								<select name="switchModel" id="first" class="form-control">
-									<option value="" selected></option>
+									<option value="{{ old('switchModel') }}" selected></option>
 									@foreach ($switchModels as $switchModel)
 										<option value="{{ $switchModel->id }}">{{ $switchModel->name }}</option>
 									@endforeach
